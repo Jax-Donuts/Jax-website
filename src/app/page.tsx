@@ -1,95 +1,167 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+
+import {
+  Card,
+  Container,
+  Group,
+  Title,
+  // Image,
+  Button,
+  Stack,
+  Box,
+  Space,
+  useMantineTheme,
+} from "@mantine/core";
+import { Location as LocationIcon, ShoppingCart } from "tabler-icons-react";
+// import { LocationCard } from '../components/location-card/location-card'
+import { MenuHeaderSlider } from "@/components/menu-header/menu-header-slider";
+import { LocationCard } from "@/components";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
+  const theme = useMantineTheme();
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
+    <>
+      <Container size="fluid" px="10rem">
+        <Card shadow="sm" padding="lg" radius="xl" p={0}>
+          <Group noWrap align="center" h="100%" grow spacing="xs">
+            {/* <Image fit="contain" src="/donuts/sugar.jpeg"></Image>
+             */}
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+              src="/products/donuts/raised/sugar.jpeg"
+              width={500}
+              height={500}
+              alt="sugar-donut"
+              // object-fit="contain"
             />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+            <Stack align="center">
+              <Image
+                src="/logo.png"
+                alt="logo"
+                width={200}
+                height={200}
+                // fill
+                style={{ justifyContent: "center" }}
+              />
+              <Title align="left" color="red" fw={700} size={80}>
+                Jax Donut
+              </Title>
+            </Stack>
+          </Group>
+        </Card>
+        <Space h="10vh" />
+        <Title
+          fw="bold"
+          ta="center"
+          sx={{ textTransform: "uppercase" }}
+          size={40}
         >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+          explore donuts
+        </Title>
+        <Box p={0} h="20vh">
+          <MenuHeaderSlider productType="donuts" preHighlight />
+        </Box>
+        <Space h="15vh" />
+        <Card shadow="sm" padding="lg" radius="xl" p={0} bg="#fff2f2" h="40vh">
+          <Group noWrap align="center" h="100%" grow>
+            <Box
+              miw="50%"
+              h="100%"
+              p="5%"
+              style={{ position: "relative", justifyContent: "left" }}
+            >
+              <Image
+                src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
+                alt="generic-image"
+                layout="fill"
+              ></Image>
+            </Box>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+            <Box miw="50%" p="5%">
+              <Title h="100%" sx={{ textTransform: "uppercase" }}>
+                try a refreshing
+                <br /> thai tea!
+              </Title>
+              <Space h="md" />
+              <Link href="/menu/productType/drinks" passHref>
+                <Button
+                  // color="red"
+                  radius={30}
+                  size="lg"
+                  bg="red"
+                  sx={(theme) => ({
+                    "&:hover": {
+                      color: "black",
+                      backgroundColor: theme.colors.red[6],
+                      transform: "scale(1.05)",
+                    },
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
+                    "@media (max-width: 48em)": {
+                      fontSize: "0.9rem",
+                    },
+                  })}
+                >
+                  Drinks
+                </Button>
+              </Link>
+            </Box>
+          </Group>
+        </Card>
+        <Space h="5vh" />
+        <Group noWrap align="center" grow>
+          <Card
+            w="50%"
+            shadow="sm"
+            padding="lg"
+            radius="xl"
+            p={0}
+            bg="#fff2f2"
+            h="40vh"
+          >
+            <Group noWrap align="center" h="100%" grow>
+              <ShoppingCart color={theme.colors["red"][6]} size="10rem" />
+              <Box miw="50%" p="5%">
+                <Title h="100%" sx={{ textTransform: "uppercase" }}>
+                  Catering
+                </Title>
+                <Space h="md" />
+                <Link href="/about" passHref>
+                  <Button color="red" radius={30} size="lg">
+                    Order Catering
+                  </Button>
+                </Link>
+              </Box>
+            </Group>
+          </Card>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+          <Card
+            shadow="sm"
+            padding="lg"
+            radius="xl"
+            p={0}
+            bg="#fff2f2"
+            h="40vh"
+          >
+            <Group noWrap align="center" h="100%" grow>
+              <LocationIcon color={theme.colors["red"][6]} size="10rem" />
+              <Box miw="50%" p="5%">
+                <LocationCard hideMap />
+                <Space h="md" />
+                <Container ta="center">
+                  <Link href="/location" passHref>
+                    <Button color="red" radius={30} size="lg">
+                      Find
+                    </Button>
+                  </Link>
+                </Container>
+              </Box>
+            </Group>
+          </Card>
+        </Group>
+        <Space h="10vh" />
+      </Container>
+    </>
+  );
 }
