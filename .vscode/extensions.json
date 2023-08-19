@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "esbenp.prettier-vscode",
+    "clinyong.vscode-css-modules",
+    "dbaeumer.vscode-eslint",
+    "yoavbls.pretty-ts-errors",
+  ]
+}

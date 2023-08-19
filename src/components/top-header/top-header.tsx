@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import { Button, Container, Grid, Group, Title } from "@mantine/core";
-import { MenuHeader } from "../menu-header/menu-header";
-import Link from "next/link";
-import Image from "next/image";
+import { Button, Container, Grid, Group, Title } from '@mantine/core'
+import { MenuHeader } from '../menu-header/menu-header'
+import Link from 'next/link'
+import Image from 'next/image'
 
 export function TopHeader() {
   return (
@@ -49,5 +49,5 @@ export function TopHeader() {
         </Grid.Col>
       </Grid>
     </Container>
-  );
+  )
 }
