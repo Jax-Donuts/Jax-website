@@ -1,24 +1,19 @@
-import { UnstyledButton, Text } from "@mantine/core";
+import { UnstyledButton, Text } from '@mantine/core'
 
-import { useStyles } from "./menu-header-item.styles";
-import { useMenuHeaderItem } from "./use-menu-header-item";
-import Link from "next/link";
+import { useStyles } from './menu-header-item.styles'
+import { useMenuHeaderItem } from './use-menu-header-item'
+import Link from 'next/link'
 
 interface Props {
-  productFamily: string;
-  productType: string;
-  preHighlight?: boolean;
-  onClick: () => void;
+  productFamily: string
+  productType: string
+  preHighlight?: boolean
+  onClick: () => void
 }
 
-export function MenuHeaderItem({
-  productFamily,
-  productType,
-  preHighlight,
-  onClick,
-}: Props) {
-  const { classes, theme, cx } = useStyles();
-  const IconComponent = useMenuHeaderItem(productType);
+export function MenuHeaderItem({ productFamily, productType, preHighlight, onClick }: Props) {
+  const { classes, theme, cx } = useStyles()
+  const IconComponent = useMenuHeaderItem(productType)
 
   return (
     <Link href={`/menu/productFamily/${productFamily}`} passHref>
@@ -28,15 +23,15 @@ export function MenuHeaderItem({
         px={20}
         py={20}
         onClick={() => {
-          onClick();
+          onClick()
         }}
       >
         {/* This is a temporary donut icon to display. We will replace with actual donut images */}
-        <IconComponent color={theme.colors["red"][6]} size="10rem" />
+        <IconComponent color={theme.colors['red'][6]} size="10rem" />
         <Text size="sm" fw="bold" ff="Arial,Helvetica,sans-serif">
           {productFamily.toUpperCase()}
         </Text>
       </UnstyledButton>
     </Link>
-  );
+  )
 }

@@ -1,25 +1,21 @@
-"use client";
+'use client'
 
-import { CacheProvider } from "@emotion/react";
-import { useEmotionCache, MantineProvider } from "@mantine/core";
-import { useServerInsertedHTML } from "next/navigation";
+import { CacheProvider } from '@emotion/react'
+import { useEmotionCache, MantineProvider } from '@mantine/core'
+import { useServerInsertedHTML } from 'next/navigation'
 
-export default function RootStyleRegistry({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const cache = useEmotionCache();
-  cache.compat = true;
+export default function RootStyleRegistry({ children }: { children: React.ReactNode }) {
+  const cache = useEmotionCache()
+  cache.compat = true
 
   useServerInsertedHTML(() => (
     <style
-      data-emotion={`${cache.key} ${Object.keys(cache.inserted).join(" ")}`}
+      data-emotion={`${cache.key} ${Object.keys(cache.inserted).join(' ')}`}
       dangerouslySetInnerHTML={{
-        __html: Object.values(cache.inserted).join(" "),
+        __html: Object.values(cache.inserted).join(' '),
       }}
     />
-  ));
+  ))
 
   return (
     <CacheProvider value={cache}>
@@ -28,12 +24,12 @@ export default function RootStyleRegistry({
         withNormalizeCSS
         theme={{
           globalStyles: () => ({
-            "Button::before, Button::after": {
+            'Button::before, Button::after': {
               fontWeight: 700,
             },
-            "a:-webkit-any-link": {
-              textDecoration: "none",
-              color: "inherit",
+            'a:-webkit-any-link': {
+              textDecoration: 'none',
+              color: 'inherit',
             },
           }),
           components: {
@@ -41,23 +37,23 @@ export default function RootStyleRegistry({
               defaultProps: {
                 styles: {
                   root: {
-                    color: "black",
-                    "&:hover": {
-                      color: "#FF0000",
-                      backgroundColor: "#FFF5F5",
+                    color: 'black',
+                    '&:hover': {
+                      color: '#FF0000',
+                      backgroundColor: '#FFF5F5',
                     },
                   },
                 },
-                variant: "subtle",
-                size: "md",
+                variant: 'subtle',
+                size: 'md',
               },
             },
           },
-          fontFamily: "FrutigerLTCom-Roman,Arial,Helvetica,sans-serif",
+          fontFamily: 'FrutigerLTCom-Roman,Arial,Helvetica,sans-serif',
         }}
       >
         {children}
       </MantineProvider>
     </CacheProvider>
-  );
+  )
 }

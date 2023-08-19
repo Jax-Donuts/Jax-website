@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { Button, Popover } from "@mantine/core";
-import { MenuHeaderDropdown } from "./menu-header-dropdown";
-import { useState } from "react";
+import { Button, Popover } from '@mantine/core'
+import { MenuHeaderDropdown } from './menu-header-dropdown'
+import { useState } from 'react'
 
 export function MenuHeader() {
-  const [opened, setOpened] = useState(false);
+  const [opened, setOpened] = useState(false)
 
   return (
     <Popover opened={opened} onChange={setOpened} width="100%" shadow="md">
@@ -18,5 +18,5 @@ export function MenuHeader() {
         <MenuHeaderDropdown setOpened={setOpened} />
       </Popover.Dropdown>
     </Popover>
-  );
+  )
 }

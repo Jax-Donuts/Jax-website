@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { Box, Card, Container, Group, Image, Text } from "@mantine/core";
-import { useStyles } from "./page.styles";
+import { Box, Card, Container, Group, Image, Text } from '@mantine/core'
+import { useStyles } from './page.styles'
 
 const mainMessage = [
   `
@@ -47,10 +47,10 @@ const mainMessage = [
 `,
   `With heartfelt gratitude,`,
   `The Jax Donut Family`,
-];
+]
 
 export default function About() {
-  const { classes } = useStyles();
+  const { classes } = useStyles()
 
   return (
     <>
@@ -61,8 +61,8 @@ export default function About() {
             radius="xl"
             sx={(theme) => ({
               backgroundImage: theme.fn.gradient({
-                from: "red.7",
-                to: "red.3",
+                from: 'red.7',
+                to: 'red.3',
                 deg: 90,
               }),
             })}
@@ -79,7 +79,7 @@ export default function About() {
           <Box>
             <Text>
               {mainMessage.map((message, i) => {
-                return <p key={i}>{message}</p>;
+                return <p key={i}>{message}</p>
               })}
             </Text>
           </Box>
@@ -95,5 +95,5 @@ export default function About() {
         </Group>
       </Container>
     </>
-  );
+  )
 }

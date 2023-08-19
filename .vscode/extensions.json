@@ -4,6 +4,6 @@
     "esbenp.prettier-vscode",
     "clinyong.vscode-css-modules",
     "dbaeumer.vscode-eslint",
-    "yoavbls.pretty-ts-errors",
+    "yoavbls.pretty-ts-errors"
   ]
 }
