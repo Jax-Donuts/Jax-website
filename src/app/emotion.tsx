@@ -27,7 +27,7 @@ export default function RootStyleRegistry({ children }: { children: React.ReactN
             'Button::before, Button::after': {
               fontWeight: 700,
             },
-            'a:-webkit-any-link': {
+            'a:any-link': {
               textDecoration: 'none',
               color: 'inherit',
             },
