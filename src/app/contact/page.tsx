@@ -8,13 +8,13 @@ import Link from 'next/link'
 
 export default function ContactUs() {
   const elements = [
-    { day: 'Monday', time: '4:00 AM - 5:00 PM' },
-    { day: 'Tuesday', time: '4:00 AM - 5:00 PM' },
-    { day: 'Wednesday', time: '4:00 AM - 5:00 PM' },
-    { day: 'Thursday', time: '4:00 AM - 5:00 PM' },
-    { day: 'Friday', time: '4:00 AM - 5:00 PM' },
-    { day: 'Saturday', time: '4:00 AM - 3:30 PM' },
-    { day: 'Sunday', time: '4:00 AM - 12:30 PM' },
+    { day: 'Monday', time: '5:00 AM - 4:00 PM' },
+    { day: 'Tuesday', time: '5:00 AM - 4:00 PM' },
+    { day: 'Wednesday', time: '5:00 AM - 4:00 PM' },
+    { day: 'Thursday', time: '5:00 AM - 4:00 PM' },
+    { day: 'Friday', time: '5:00 AM - 4:00 PM' },
+    { day: 'Saturday', time: '5:00 AM - 3:30 PM' },
+    { day: 'Sunday', time: '5:00 AM - 12:30 PM' },
   ]
   const rows = elements.map((element, i) => (
     <tr key={i}>

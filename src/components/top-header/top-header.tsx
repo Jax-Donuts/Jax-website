@@ -12,8 +12,6 @@ export function TopHeader() {
         <Grid.Col span="auto">
           <Link href="/">
             <Group spacing="xs">
-              {/* <Image width="2rem" height="2rem" fit="fill" src="/donut.png" /> */}
-
               <Image src="/logo.png" alt="logo" width={32} height={32} />
               <Title size="2rem" align="left" color="red" fw={700}>
                 Jax Donut
