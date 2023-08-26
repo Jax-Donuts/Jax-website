@@ -2,8 +2,9 @@
 
 import { Title, Text, Container } from '@mantine/core'
 import { useMemo } from 'react'
-import { Product, products } from '@/shared/product-types'
+import { Product } from '@/shared/product-types'
 import { useSearchParams } from 'next/navigation'
+import { useMenu } from './use-menu'
 
 type MenuRouteParams = {
   productGroupType: 'productType' | 'productFamily'
@@ -14,12 +15,14 @@ export default function Menu({ params }: { params: MenuRouteParams }) {
   const productGroupType = params.productGroupType
   const productGroup = params.productGroup
 
+  const { products } = useMenu()
+
   const productsOfFamily = useMemo(
     () =>
       productGroupType === 'productFamily'
         ? products.filter((product) => product.families.some((family) => family === productGroup))
         : products.filter((product) => product.type === productGroup),
-    [productGroup, productGroupType],
+    [productGroup, productGroupType, products],
   )
 
   console.log(productGroupType, productGroup)

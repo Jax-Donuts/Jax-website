@@ -8,7 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "lint-fix": "npx prettier --write .",
+    "postinstall": "prisma generate",
     "preinstall-add-git-hooks": "[ -d ./.git ] && cp .git-hooks/* .git/hooks/ && chmod +x .git/hooks/* || true"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -16,17 +20,23 @@
     "@mantine/core": "^6.0.19",
     "@mantine/form": "^6.0.19",
     "@mantine/hooks": "^6.0.19",
-    "@types/node": "20.5.0",
+    "@prisma/client": "^5.1.1",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "axios": "^1.4.0",
     "embla-carousel-react": "^7.1.0",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.16",
     "next": "13.4.16",
+    "prisma": "^5.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tabler-icons-react": "^1.56.0",
-    "typescript": "5.1.6"
+    "tabler-icons-react": "^1.56.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.6",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
   }
 }
