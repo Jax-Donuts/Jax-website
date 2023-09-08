@@ -27,11 +27,11 @@ export default function TryNewProductCard() {
             <Button
               radius={30}
               size="lg"
-              bg="red"
+              bg="#fa5252"
               sx={(theme) => ({
                 '&:hover': {
                   color: 'black',
-                  backgroundColor: theme.colors.red[6],
+                  backgroundColor: '#fa5252',
                   transform: 'scale(1.05)',
                 },
 

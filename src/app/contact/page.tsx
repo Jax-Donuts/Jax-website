@@ -32,7 +32,7 @@ export default function ContactUs() {
           <Grid.Col span={4}>
             <Stack mih="100%" spacing="xl" justify="space-between" align="stretch">
               <Card bg="#FFF5F5" radius="xl" sx={() => ({ textAlign: 'center' })}>
-                <ClockHour4 color={'red'} size="10rem" />
+                <ClockHour4 color="#fa5252" size="10rem" />
                 <Title pb="1rem">Hours*</Title>
                 <Table captionSide="bottom" verticalSpacing="md">
                   <caption>
@@ -47,7 +47,7 @@ export default function ContactUs() {
           <Grid.Col span={4}>
             <Stack mih="100%" spacing="xl" justify="space-between" align="stretch">
               <Card bg="#FFF5F5" radius="xl" sx={() => ({ textAlign: 'center' })}>
-                <LocationIcon color={'red'} size="10rem" />
+                <LocationIcon color="#fa5252" size="10rem" />
                 <Title align="center">Address</Title>
                 <Text align="center">
                   Come visit us!
@@ -58,7 +58,7 @@ export default function ContactUs() {
                 </Text>
               </Card>
               <Card bg="#FFF5F5" radius="xl" sx={() => ({ textAlign: 'center' })}>
-                <Phone color={'red'} size="10rem" />
+                <Phone color="#fa5252" size="10rem" />
                 <Title>Call Us</Title>
                 <Text align="center">
                   Want to check if we have your favorites or place an order for pickup?

@@ -15,7 +15,9 @@ export default function Admin() {
       </Modal>
       <PageHeader title="admin" />
       <Group position="center">
-        <Button onClick={open}>Edit/Create Product</Button>
+        <Button tt="uppercase" onClick={open}>
+          Edit/Create Product
+        </Button>
       </Group>
     </>
   )

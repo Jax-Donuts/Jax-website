@@ -26,7 +26,7 @@ export function TopHeader() {
           <Link href="/">
             <Group spacing="xs">
               <Image src="/logo.png" alt="logo" width={80} height={80} />
-              <Title size="3.5rem" align="left" color="red.8" fw={700}>
+              <Title size="3.5rem" align="left" color="red" fw={700}>
                 Jax Donut
               </Title>
             </Group>

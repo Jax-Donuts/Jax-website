@@ -11,7 +11,7 @@ export default function TitleCard() {
         <Image src="/products/donuts/raised/sugar.jpeg" width={500} height={500} alt="sugar-donut" />
         <Stack align="center">
           <Image src="/logo.png" alt="logo" width={200} height={200} style={{ justifyContent: 'center' }} />
-          <Title align="left" color="red.8" fw={700} size={80}>
+          <Title align="left" color="red" fw={700} size={80}>
             Jax Donut
           </Title>
         </Stack>
