@@ -1,10 +1,10 @@
 'use client'
 
-import { Container, Title, Text, Anchor, Button, Box } from '@mantine/core'
+import { Anchor, Button, Container, Text, Title } from '@mantine/core'
 import React from 'react'
 import { LocationAddress, LocationAddressGoogleMapsLink, LocationCity } from '../../shared/constants'
-import { useLocation } from './use-location'
 import { useStyles } from './location-card.styles'
+import { useLocation } from './use-location'
 
 interface Props {
   hideMap?: boolean
