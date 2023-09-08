@@ -4,7 +4,6 @@ import {
   Box,
   Checkbox,
   Container,
-  createStyles,
   MultiSelect,
   NumberInput,
   Paper,
@@ -41,7 +40,7 @@ export default function EditProductForm() {
         <Paper radius="md" bg="#FFF5F5" p="xl">
           <Box>
             <Text align="center" fw={700}>
-              Edit/Create Product Form
+              Edit/Create Product
             </Text>
           </Box>
 

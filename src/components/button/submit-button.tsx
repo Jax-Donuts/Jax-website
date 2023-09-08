@@ -2,19 +2,13 @@
 
 import React from 'react'
 import { Button, createStyles } from '@mantine/core'
+import { useStyles } from './submit-button.styles'
 
-const useStyles = createStyles((theme) => ({
-  button: {
-    color: theme.black,
-    backgroundColor: theme.colors.red[6],
-    '&:hover': {
-      color: theme.black,
-      backgroundColor: theme.colors.red[8],
-    },
-  },
-}))
+interface Props {
+  text: string
+}
 
-export function SubmitButton({ text }: { text: string }) {
+export function SubmitButton({ text }: Props) {
   const { classes } = useStyles()
 
   return (
