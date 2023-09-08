@@ -1,5 +1,6 @@
 'use client'
 
+import { SubmitButton } from '@/components'
 import {
   Box,
   Checkbox,
@@ -14,17 +15,22 @@ import {
   Textarea,
 } from '@mantine/core'
 import { isInRange, isNotEmpty, useForm } from '@mantine/form'
-import React from 'react'
-import { SubmitButton } from '@/components'
+import { Product } from '@prisma/client'
+import { useState } from 'react'
 
-export default function EditProductForm() {
+interface Props {
+  product?: Product
+}
+export default function EditProductForm({ product }: Props) {
+  console.log(product)
+  const [editing, setEditing] = useState(!!product)
   const form = useForm({
     initialValues: {
-      itemName: '',
-      displayName: '',
-      priceValue: 0.0,
-      itemSelect: '',
-      familySelect: '',
+      itemName: product?.name ?? '',
+      displayName: product?.displayName ?? '',
+      priceValue: product?.price.toNumber() ?? 0.0,
+      itemSelect: product?.type ?? '',
+      familySelect: product?.families ?? [''],
     },
     validate: {
       itemName: isNotEmpty('Please enter an item name.'),
@@ -118,7 +124,10 @@ export default function EditProductForm() {
               <Textarea placeholder="Item description" label="Description" autosize radius="md" />
 
               <Checkbox defaultChecked label="Available" description="Is the item currently being sold?" radius="sm" />
-              <SubmitButton text="Submit" />
+              <SubmitButton
+                text={editing ? 'Update' : 'Submit'}
+                onClick={() => (editing ? console.log('Editing') : console.log('Creating'))}
+              />
             </Stack>
           </form>
         </Paper>
