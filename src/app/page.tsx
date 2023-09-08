@@ -45,7 +45,7 @@ export default function Home() {
                 // fill
                 style={{ justifyContent: 'center' }}
               />
-              <Title align="left" color="red" fw={700} size={80}>
+              <Title align="left" color="red.8" fw={700} size={80}>
                 Jax Donut
               </Title>
             </Stack>
