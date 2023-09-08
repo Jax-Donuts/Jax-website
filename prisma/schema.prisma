@@ -16,6 +16,7 @@ model Product {
   updatedAt   DateTime @updatedAt
   name        String   @unique
   displayName String
+  available   Boolean
   price       Decimal
   type        String
   families    String[]

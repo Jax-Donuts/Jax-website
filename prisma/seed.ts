@@ -5,6 +5,7 @@ async function main() {
     {
       name: 'chocolate glaze',
       displayName: 'chocolate',
+      available: true,
       price: 1.69,
       type: 'donuts',
       families: ['raised'],
