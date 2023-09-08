@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button, createStyles } from '@mantine/core'
+import { Button } from '@mantine/core'
 import { useStyles } from './submit-button.styles'
 
 interface Props {
