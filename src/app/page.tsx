@@ -12,6 +12,7 @@ export default function Home() {
   return (
     <>
       <Container size="fluid" px="10rem">
+        <Space h="10vh" />
         <TitleCard />
         <Space h="10vh" />
         <Title fw="bold" ta="center" sx={{ textTransform: 'uppercase' }} size={40}>
