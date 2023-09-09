@@ -4,9 +4,9 @@ import { ChevronDown, ChevronUp, Selector } from 'tabler-icons-react'
 import { useStyles } from './products-table.styles'
 
 interface Props {
-  sortBy: keyof Product | null
-  setSorting: (field: keyof Product) => void
   reverseSortDirection: boolean
+  sortByKey: keyof Product | null
+  applySortingToggles: (field: keyof Product) => void
 }
 
 interface ThProps {
@@ -38,21 +38,21 @@ function Th({ children, reversed, sorted, onSort, style }: ThProps) {
   )
 }
 
-export function ProductsTableHeader({ reverseSortDirection, sortBy, setSorting }: Props) {
+export function ProductsTableHeader({ reverseSortDirection, sortByKey, applySortingToggles }: Props) {
   return (
     <thead>
       <tr>
         <Th style={{ width: rem(40) }}>{''}</Th>
-        <Th sorted={sortBy === 'name'} reversed={reverseSortDirection} onSort={() => setSorting('name')}>
+        <Th sorted={sortByKey === 'name'} reversed={reverseSortDirection} onSort={() => applySortingToggles('name')}>
           Item Name
         </Th>
-        <Th sorted={sortBy === 'price'} reversed={reverseSortDirection} onSort={() => setSorting('price')}>
+        <Th sorted={sortByKey === 'price'} reversed={reverseSortDirection} onSort={() => applySortingToggles('price')}>
           Price
         </Th>
-        <Th sorted={sortBy === 'type'} reversed={reverseSortDirection} onSort={() => setSorting('type')}>
+        <Th sorted={sortByKey === 'type'} reversed={reverseSortDirection} onSort={() => applySortingToggles('type')}>
           Type
         </Th>
-        <Th sorted={sortBy === 'families'}>Families</Th>
+        <Th sorted={sortByKey === 'families'}>Families</Th>
         <Th style={{ width: rem(40) }}>{''}</Th>
       </tr>
     </thead>

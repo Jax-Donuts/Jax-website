@@ -1,10 +1,9 @@
 'use client'
 
 import { archivo } from '@/app/emotion'
-import { ActionIcon, Container, Group, Stack, Text, Title } from '@mantine/core'
+import { Container, Group, Stack, Text, Title } from '@mantine/core'
 import Image from 'next/image'
 import Link from 'next/link'
-import { BrandInstagram, BrandTwitter, BrandYoutube } from 'tabler-icons-react'
 import { useStyles } from './footer.styles'
 
 export default function Footer() {
@@ -37,17 +36,7 @@ export default function Footer() {
         <Group spacing={100} className={classes.links}>
           {items}
         </Group>
-        <Group spacing="xs" position="right" noWrap>
-          <ActionIcon size="lg" variant="default" radius="xl">
-            <BrandTwitter size="1.05rem" />
-          </ActionIcon>
-          <ActionIcon size="lg" variant="default" radius="xl">
-            <BrandYoutube size="1.05rem" />
-          </ActionIcon>
-          <ActionIcon size="lg" variant="default" radius="xl">
-            <BrandInstagram size="1.05rem" />
-          </ActionIcon>
-        </Group>
+        <Group spacing="xs" position="right" noWrap></Group>
       </div>
     </Container>
   )

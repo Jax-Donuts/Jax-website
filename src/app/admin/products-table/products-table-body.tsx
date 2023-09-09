@@ -1,20 +1,19 @@
-import { Checkbox, Text, UnstyledButton } from '@mantine/core'
+import { Checkbox, UnstyledButton } from '@mantine/core'
 import { Product } from '@prisma/client'
 import { Edit } from 'tabler-icons-react'
 
 interface Props {
-  sortedData: Product[]
+  sortedAndFilteredData: Product[]
   selection: string[]
   toggleRow: (id: string) => void
   openEdit: (product: Product) => void
 }
 
-export function ProductsTableBody({ sortedData, selection, toggleRow, openEdit }: Props) {
-  console.log(openEdit)
+export function ProductsTableBody({ sortedAndFilteredData, selection, toggleRow, openEdit }: Props) {
   return (
     <tbody>
-      {sortedData && sortedData.length > 0 ? (
-        sortedData.map((row) => (
+      {sortedAndFilteredData && sortedAndFilteredData.length > 0 ? (
+        sortedAndFilteredData.map((row) => (
           <tr key={row.name}>
             <td>
               <Checkbox
@@ -42,13 +41,7 @@ export function ProductsTableBody({ sortedData, selection, toggleRow, openEdit }
           </tr>
         ))
       ) : (
-        <tr>
-          <td colSpan={Object.keys(sortedData?.[0] ?? {}).length}>
-            <Text weight={500} align="center">
-              Nothing found
-            </Text>
-          </td>
-        </tr>
+        <tr></tr>
       )}
     </tbody>
   )
