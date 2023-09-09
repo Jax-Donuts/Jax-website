@@ -7,21 +7,24 @@ import { useStyles } from './location-card.styles'
 import { useLocation } from './use-location'
 
 interface Props {
+  hideTitle?: boolean
   hideMap?: boolean
 }
 
 import Image from 'next/image'
-export function LocationCard({ hideMap }: Props) {
+export function LocationCard({ hideMap, hideTitle }: Props) {
   const distance = useLocation()
   const { classes } = useStyles()
 
   return (
     <React.Fragment>
-      <Container>
-        <Title ta="center" m="sm" color="red">
-          Our Shop
-        </Title>
-      </Container>
+      {!hideTitle ? (
+        <Container>
+          <Title ta="center" m="sm" color="red">
+            Our Shop
+          </Title>
+        </Container>
+      ) : null}
       <Container ta="center">
         <Anchor
           href={LocationAddressGoogleMapsLink}

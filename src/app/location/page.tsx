@@ -1,9 +1,13 @@
 'use client'
 
-import React from 'react'
-
 import { LocationCard } from '@/components'
+import { PageHeader } from '@/components/page-header/page-header'
 
 export default function Location() {
-  return <LocationCard />
+  return (
+    <>
+      <PageHeader title="our shop" />
+      <LocationCard hideTitle />
+    </>
+  )
 }

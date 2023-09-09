@@ -1,6 +1,7 @@
 'use client'
 
-import { Box, Card, Container, Group, Image, Text } from '@mantine/core'
+import { PageHeader } from '@/components/page-header/page-header'
+import { Box, Container, Group, Image, Text } from '@mantine/core'
 import { useStyles } from './page.styles'
 
 const mainMessage = [
@@ -54,26 +55,7 @@ export default function About() {
 
   return (
     <>
-      <Container>
-        <Group noWrap align="center" h="100%" grow spacing="xs">
-          <Card
-            shadow="xl"
-            radius="xl"
-            sx={(theme) => ({
-              backgroundImage: theme.fn.gradient({
-                from: 'red.7',
-                to: 'red.3',
-                deg: 90,
-              }),
-            })}
-          >
-            <Text size="3rem" className={classes.mainTitle}>
-              About Us
-            </Text>
-          </Card>
-        </Group>
-      </Container>
-
+      <PageHeader title="about us" />
       <Container fluid px="10rem">
         <Group noWrap align="center" h="100%" grow spacing="xs" pt="md">
           <Box>

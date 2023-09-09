@@ -1,9 +1,9 @@
 'use client'
 
-import { Title, Text, Container } from '@mantine/core'
-import { useMemo } from 'react'
+import { PageHeader } from '@/components/page-header/page-header'
 import { Product } from '@/shared/product-types'
-import { useSearchParams } from 'next/navigation'
+import { Container, Text } from '@mantine/core'
+import { useMemo } from 'react'
 import { useMenu } from './use-menu'
 
 type MenuRouteParams = {
@@ -31,9 +31,7 @@ export default function Menu({ params }: { params: MenuRouteParams }) {
 
   return (
     <Container>
-      <Title order={2} weight={200} align="center" color="red" fw={700} size={80}>
-        {productGroup.toUpperCase()}
-      </Title>
+      <PageHeader title={productGroup.toUpperCase()} />
       <>
         {productsOfFamily.map((product) => {
           return <Text key={product.name}>{product.displayName.toUpperCase()}</Text>

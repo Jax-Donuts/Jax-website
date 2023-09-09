@@ -1,8 +1,14 @@
 'use client'
 
 import { CacheProvider } from '@emotion/react'
-import { useEmotionCache, MantineProvider } from '@mantine/core'
+import { MantineProvider, useEmotionCache } from '@mantine/core'
+import { Archivo } from 'next/font/google'
 import { useServerInsertedHTML } from 'next/navigation'
+
+export const archivo = Archivo({
+  weight: '800',
+  subsets: ['latin'],
+})
 
 export default function RootStyleRegistry({ children }: { children: React.ReactNode }) {
   const cache = useEmotionCache()
@@ -49,7 +55,7 @@ export default function RootStyleRegistry({ children }: { children: React.ReactN
               },
             },
           },
-          fontFamily: 'FrutigerLTCom-Roman,Arial,Helvetica,sans-serif',
+          fontFamily: `${archivo.style.fontFamily},Arial,Helvetica,sans-serif`,
         }}
       >
         {children}
