@@ -13,6 +13,16 @@ export interface Product {
   description: string
 }
 
+export interface ProductAttr {
+  name: string
+  displayName: string
+  available: boolean
+  price: number
+  type: string
+  families: string[]
+  description: string
+}
+
 /** TODO: This product data is to be stored in a database where each record refers to each product */
 export const products: Product[] = [
   {

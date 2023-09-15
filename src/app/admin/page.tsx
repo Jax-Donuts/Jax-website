@@ -6,39 +6,16 @@ import EditProductForm from './edit-product-form'
 
 import { SubmitButton } from '@/components'
 import { useDisclosure } from '@mantine/hooks'
-import { Prisma, Product } from '@prisma/client'
+import { Product } from '@prisma/client'
 import { useState } from 'react'
 import { ProductsTable } from './products-table/products-table'
+import { useAddProduct } from './use-add-product'
 
 export default function Admin() {
   const [opened, { open, close }] = useDisclosure(false)
   const [editingProduct, setEditingProduct] = useState<Product>()
-  const data: Product[] = [
-    {
-      id: '1',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      name: 'chocolate',
-      displayName: 'Chocolate Glaze',
-      price: new Prisma.Decimal(0.69),
-      type: 'donuts',
-      families: ['raised'],
-      description: '',
-      available: true,
-    },
-    {
-      id: '2',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      name: 'glaze',
-      displayName: 'Glaze',
-      price: new Prisma.Decimal(1.69),
-      type: 'donuts',
-      families: ['raised', 'filled'],
-      description: '',
-      available: true,
-    },
-  ]
+  const { product, createProduct } = useAddProduct()
+  const data: Product[] = []
   return (
     <>
       <Modal
