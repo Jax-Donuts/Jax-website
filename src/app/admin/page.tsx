@@ -8,12 +8,12 @@ import { Product } from '@prisma/client'
 import { useEffect, useState } from 'react'
 import EditProductForm from './edit-product-form'
 import { ProductsTable } from './products-table/products-table'
-import { useGetData } from './use-get-products'
+import { useGetProducts } from './use-get-products'
 
 export default function Admin() {
   const [opened, { open, close }] = useDisclosure(false)
   const [editingProduct, setEditingProduct] = useState<Product>()
-  const { products, getProducts } = useGetData()
+  const { products, getProducts } = useGetProducts()
   useEffect(() => {
     getProducts()
   }, [getProducts])

@@ -13,7 +13,7 @@ export interface Product {
   description: string
 }
 
-export interface productAttr {
+export interface ProductAttr {
   name: string
   displayName: string
   available: boolean

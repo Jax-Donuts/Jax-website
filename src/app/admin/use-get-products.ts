@@ -1,7 +1,7 @@
 import { Product } from '@prisma/client'
 import { useCallback, useEffect, useState } from 'react'
 
-export function useGetData() {
+export function useGetProducts() {
   const [products, setProducts] = useState<Product[]>([])
   const getProducts = useCallback(async () => {
     try {
@@ -12,7 +12,7 @@ export function useGetData() {
       const fetchedProducts = await response.json()
       setProducts(fetchedProducts)
     } catch (error) {
-      console.error('Error fetching prodcuts', error)
+      console.error('Error fetching products', error)
     }
   }, [])
 
