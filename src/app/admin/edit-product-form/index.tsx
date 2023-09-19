@@ -68,7 +68,6 @@ export default function EditProductForm({ product }: Props) {
           <form
             onSubmit={(e) => {
               e.preventDefault()
-              console.log('Form Values: ', form.values)
               createProduct(form.values)
             }}
           >
@@ -137,8 +136,20 @@ export default function EditProductForm({ product }: Props) {
                 ]}
                 {...form.getInputProps('families')}
               />
-              <Textarea placeholder="Item description" label="Description" autosize radius="md" />
-              <Checkbox defaultChecked label="Available" description="Is the item currently being sold?" radius="sm" />
+              <Textarea
+                placeholder="Item description"
+                label="Description"
+                autosize
+                radius="md"
+                {...form.getInputProps('description')}
+              />
+              <Checkbox
+                defaultChecked
+                label="Available"
+                description="Is the item currently being sold?"
+                radius="sm"
+                {...form.getInputProps('available')}
+              />
               <SubmitButton
                 text={editing ? 'Update' : 'Submit'}
                 onClick={() => (editing ? console.log('Editing') : console.log('Creating'))}

@@ -1,6 +1,6 @@
-import { req } from '@/shared/client' //client to talk to backend
+import { req } from '@/shared/client'
 import { ProductAttr } from '@/shared/product-types'
-import { Product } from '@prisma/client' //product data type from db
+import { Product } from '@prisma/client'
 import { useCallback, useState } from 'react'
 
 export function useAddProduct() {
