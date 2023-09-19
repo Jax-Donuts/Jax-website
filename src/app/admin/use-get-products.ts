@@ -1,6 +1,4 @@
-//import { req } from '@/shared/client'
 import { Product } from '@prisma/client'
-//import { ProductAttr } from '@/shared/product-types'
 import { useCallback, useEffect, useState } from 'react'
 
 export function useGetData() {
@@ -11,8 +9,8 @@ export function useGetData() {
       if (!response.ok) {
         throw new Error('Failed to fetch products')
       }
-      const productsData = await response.json()
-      setProducts(productsData)
+      const fetchedProducts = await response.json()
+      setProducts(fetchedProducts)
     } catch (error) {
       console.error('Error fetching prodcuts', error)
     }
