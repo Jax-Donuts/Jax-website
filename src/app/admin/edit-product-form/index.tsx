@@ -16,14 +16,13 @@ import {
 } from '@mantine/core'
 import { isInRange, isNotEmpty, useForm } from '@mantine/form'
 import { Product } from '@prisma/client'
-import { FormEvent, useState } from 'react'
+import { useState } from 'react'
 import { useAddProduct } from '../use-add-product'
 
 interface Props {
   product?: Product
 }
 export default function EditProductForm({ product }: Props) {
-  console.log(product)
   const { createProduct } = useAddProduct()
   const [editing, setEditing] = useState(!!product)
   const form = useForm({
@@ -45,16 +44,6 @@ export default function EditProductForm({ product }: Props) {
     },
   })
 
-  const formSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const { name, displayName, available, price, type, families, description } = form.values
-    try {
-      await createProduct(form.values)
-      console.log('Product created')
-    } catch {
-      console.log('Error')
-    }
-  }
   return (
     <>
       <Container>

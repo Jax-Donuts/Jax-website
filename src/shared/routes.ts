@@ -1,9 +1,9 @@
 import { Product } from '@prisma/client'
 import { NextResponse } from 'next/server'
 
-export interface JaxRequest<W, X = undefined> {
-  response: W
-  body: X
+export interface JaxRequest<RESPONSE, BODY = undefined> {
+  response: RESPONSE
+  body: BODY
 }
 
 export interface Routes {
