@@ -17,29 +17,33 @@ import {
 import { isInRange, isNotEmpty, useForm } from '@mantine/form'
 import { Product } from '@prisma/client'
 import { useState } from 'react'
+import { useAddProduct } from '../use-add-product'
 
 interface Props {
   product?: Product
 }
 export default function EditProductForm({ product }: Props) {
-  console.log(product)
+  const { createProduct } = useAddProduct()
   const [editing, setEditing] = useState(!!product)
   const form = useForm({
     initialValues: {
-      itemName: product?.name ?? '',
+      name: product?.name ?? '',
       displayName: product?.displayName ?? '',
-      priceValue: product?.price.toNumber() ?? 0.0,
-      itemSelect: product?.type ?? '',
-      familySelect: product?.families ?? [''],
+      available: product?.available ?? true,
+      price: product?.price.toNumber() ?? 0.0,
+      type: product?.type ?? '',
+      families: product?.families ?? [''],
+      description: product?.description ?? '',
     },
     validate: {
-      itemName: isNotEmpty('Please enter an item name.'),
+      name: isNotEmpty('Please enter an item name.'),
       displayName: isNotEmpty('Please enter a display name.'),
-      priceValue: isInRange({ min: 0.01, max: 1000.0 }, 'Please enter a valid price.'),
-      itemSelect: isNotEmpty('Please select a type.'),
-      familySelect: isNotEmpty('Please select a family category.'),
+      price: isInRange({ min: 0.01, max: 1000.0 }, 'Please enter a valid price.'),
+      type: isNotEmpty('Please select a type.'),
+      families: isNotEmpty('Please select a family category.'),
     },
   })
+
   return (
     <>
       <Container>
@@ -50,16 +54,20 @@ export default function EditProductForm({ product }: Props) {
             </Text>
           </Box>
 
-          <form onSubmit={form.onSubmit((values) => console.log(values))}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault()
+              createProduct(form.values)
+            }}
+          >
             <Stack spacing="xl">
               <TextInput
                 placeholder="Glaze, jelly, chocolate cake, etc."
                 label="Item Name"
                 radius="md"
                 withAsterisk
-                {...form.getInputProps('itemName')}
+                {...form.getInputProps('name')}
               />
-
               <TextInput
                 placeholder="Name that will be displayed on page"
                 label="Display Name"
@@ -67,7 +75,6 @@ export default function EditProductForm({ product }: Props) {
                 withAsterisk
                 {...form.getInputProps('displayName')}
               />
-
               <NumberInput
                 label="Price"
                 defaultValue={0.0}
@@ -80,9 +87,8 @@ export default function EditProductForm({ product }: Props) {
                 step={0.05}
                 min={0.0}
                 max={1000.0}
-                {...form.getInputProps('priceValue')}
+                {...form.getInputProps('price')}
               />
-
               <Select
                 placeholder="Type of item"
                 label="Type"
@@ -93,9 +99,8 @@ export default function EditProductForm({ product }: Props) {
                   { value: 'baked', label: 'Baked' },
                   { value: 'drinks', label: 'Drinks' },
                 ]}
-                {...form.getInputProps('itemSelect')}
+                {...form.getInputProps('type')}
               />
-
               <MultiSelect
                 placeholder="Item family"
                 label="Family"
@@ -118,12 +123,22 @@ export default function EditProductForm({ product }: Props) {
                   { value: 'energy', label: 'Energy', group: 'Drinks' },
                   { value: 'other', label: 'Other', group: 'Other' },
                 ]}
-                {...form.getInputProps('familySelect')}
+                {...form.getInputProps('families')}
               />
-
-              <Textarea placeholder="Item description" label="Description" autosize radius="md" />
-
-              <Checkbox defaultChecked label="Available" description="Is the item currently being sold?" radius="sm" />
+              <Textarea
+                placeholder="Item description"
+                label="Description"
+                autosize
+                radius="md"
+                {...form.getInputProps('description')}
+              />
+              <Checkbox
+                defaultChecked
+                label="Available"
+                description="Is the item currently being sold?"
+                radius="sm"
+                {...form.getInputProps('available')}
+              />
               <SubmitButton
                 text={editing ? 'Update' : 'Submit'}
                 onClick={() => (editing ? console.log('Editing') : console.log('Creating'))}

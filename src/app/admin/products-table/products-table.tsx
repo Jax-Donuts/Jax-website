@@ -4,17 +4,16 @@ import { useCallback } from 'react'
 import { Search } from 'tabler-icons-react'
 import { ProductsTableBody } from './products-table-body'
 import { ProductsTableHeader } from './products-table-header'
-import { useProductTableSelection } from './use-product-table-selection'
-
 import { useProductTableSearch } from './use-product-table-search'
+import { useProductTableSelection } from './use-product-table-selection'
 import { useProductTableSorting } from './use-product-table-sorting'
 
 interface Props {
-  data: Product[]
+  products: Product[]
   openEdit: (product: Product) => void
 }
 
-export function ProductsTable({ data, openEdit }: Props) {
+export function ProductsTable({ products, openEdit }: Props) {
   const { searchQuery, setSearchQuery, filterBySearch } = useProductTableSearch()
   const { selection, toggleRow } = useProductTableSelection()
 
@@ -25,15 +24,17 @@ export function ProductsTable({ data, openEdit }: Props) {
     applySortingToggles,
     setSortedAndFilteredData,
     applySortAndFilter,
-  } = useProductTableSorting(data, searchQuery, filterBySearch)
+  } = useProductTableSorting(products, searchQuery, filterBySearch)
 
   const searchHandler = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = event.currentTarget
       setSearchQuery(value)
-      setSortedAndFilteredData(applySortAndFilter(data, { sortByKey, reversed: reverseSortDirection, search: value }))
+      setSortedAndFilteredData(
+        applySortAndFilter(products, { sortByKey, reversed: reverseSortDirection, search: value }),
+      )
     },
-    [data, reverseSortDirection, setSearchQuery, setSortedAndFilteredData, sortByKey, applySortAndFilter],
+    [products, reverseSortDirection, setSearchQuery, setSortedAndFilteredData, sortByKey, applySortAndFilter],
   )
 
   return (
