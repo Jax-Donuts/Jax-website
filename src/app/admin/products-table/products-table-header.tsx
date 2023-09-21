@@ -1,12 +1,12 @@
+import { ProductDto } from '@/shared/product-types'
 import { Center, Group, Text, UnstyledButton, rem } from '@mantine/core'
-import { Product } from '@prisma/client'
 import { ChevronDown, ChevronUp, Selector } from 'tabler-icons-react'
 import { useStyles } from './products-table.styles'
 
 interface Props {
   reverseSortDirection: boolean
-  sortByKey: keyof Product | null
-  applySortingToggles: (field: keyof Product) => void
+  sortByKey: keyof ProductDto | null
+  applySortingToggles: (field: keyof ProductDto) => void
 }
 
 interface ThProps {

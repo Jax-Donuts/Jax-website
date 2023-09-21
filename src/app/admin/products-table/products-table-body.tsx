@@ -1,12 +1,12 @@
+import { ProductDto } from '@/shared/product-types'
 import { Checkbox, UnstyledButton } from '@mantine/core'
-import { Product } from '@prisma/client'
 import { Edit } from 'tabler-icons-react'
 
 interface Props {
-  sortedAndFilteredData: Product[]
+  sortedAndFilteredData: ProductDto[]
   selection: string[]
   toggleRow: (id: string) => void
-  openEdit: (product: Product) => void
+  openEdit: (product: ProductDto) => void
 }
 
 export function ProductsTableBody({ sortedAndFilteredData, selection, toggleRow, openEdit }: Props) {

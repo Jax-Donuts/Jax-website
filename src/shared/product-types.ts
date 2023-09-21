@@ -13,6 +13,16 @@ export interface Product {
   description: string
 }
 
+export interface ProductDto {
+  name: string
+  displayName: string
+  available: boolean
+  price: number
+  type: string
+  families: string[]
+  description: string
+}
+
 export interface ProductAttr {
   name: string
   displayName: string

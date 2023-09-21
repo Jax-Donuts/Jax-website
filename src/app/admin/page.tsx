@@ -2,21 +2,18 @@
 
 import { SubmitButton } from '@/components'
 import { PageHeader } from '@/components/page-header/page-header'
+import { ProductDto } from '@/shared/product-types'
 import { Container, Group, Modal } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { Product } from '@prisma/client'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import EditProductForm from './edit-product-form'
 import { ProductsTable } from './products-table/products-table'
 import { useGetProducts } from './use-get-products'
 
 export default function Admin() {
   const [opened, { open, close }] = useDisclosure(false)
-  const [editingProduct, setEditingProduct] = useState<Product>()
+  const [editingProduct, setEditingProduct] = useState<ProductDto>()
   const { products, getProducts } = useGetProducts()
-  useEffect(() => {
-    getProducts()
-  }, [getProducts])
 
   return (
     <>

@@ -1,5 +1,5 @@
-import { Product } from '@prisma/client'
 import { NextResponse } from 'next/server'
+import { ProductAttr, ProductDto } from './product-types'
 
 export interface JaxRequest<RESPONSE, BODY = undefined> {
   response: RESPONSE
@@ -7,20 +7,8 @@ export interface JaxRequest<RESPONSE, BODY = undefined> {
 }
 
 export interface Routes {
-  '/api': JaxRequest<number>
-  '/api/products': JaxRequest<Product[]>
-  '/api/product': JaxRequest<
-    Product,
-    {
-      name: string
-      displayName: string
-      available: boolean
-      price: number
-      type: string
-      families: string[]
-      description: string
-    }
-  >
+  'GET /products': JaxRequest<ProductDto[]>
+  'POST /product': JaxRequest<ProductDto, ProductAttr>
 }
 
 export type Response<T extends keyof Routes> = NextResponse<Routes[T]['response']>

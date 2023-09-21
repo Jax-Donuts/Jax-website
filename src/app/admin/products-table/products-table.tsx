@@ -1,6 +1,6 @@
+import { ProductDto } from '@/shared/product-types'
 import { Container, ScrollArea, Table, Text, TextInput } from '@mantine/core'
-import { Product } from '@prisma/client'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import { Search } from 'tabler-icons-react'
 import { ProductsTableBody } from './products-table-body'
 import { ProductsTableHeader } from './products-table-header'
@@ -9,8 +9,8 @@ import { useProductTableSelection } from './use-product-table-selection'
 import { useProductTableSorting } from './use-product-table-sorting'
 
 interface Props {
-  products: Product[]
-  openEdit: (product: Product) => void
+  products: ProductDto[]
+  openEdit: (product: ProductDto) => void
 }
 
 export function ProductsTable({ products, openEdit }: Props) {
@@ -36,6 +36,10 @@ export function ProductsTable({ products, openEdit }: Props) {
     },
     [products, reverseSortDirection, setSearchQuery, setSortedAndFilteredData, sortByKey, applySortAndFilter],
   )
+
+  useEffect(() => {
+    setSortedAndFilteredData(applySortAndFilter(products, { sortByKey, reversed: reverseSortDirection, search: '' }))
+  }, [applySortAndFilter, products, reverseSortDirection, setSortedAndFilteredData, sortByKey])
 
   return (
     <Container>

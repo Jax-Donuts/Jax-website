@@ -1,6 +1,7 @@
 'use client'
 
 import { SubmitButton } from '@/components'
+import { ProductDto } from '@/shared/product-types'
 import {
   Box,
   Checkbox,
@@ -15,12 +16,11 @@ import {
   Textarea,
 } from '@mantine/core'
 import { isInRange, isNotEmpty, useForm } from '@mantine/form'
-import { Product } from '@prisma/client'
 import { useState } from 'react'
 import { useAddProduct } from '../use-add-product'
 
 interface Props {
-  product?: Product
+  product?: ProductDto
 }
 export default function EditProductForm({ product }: Props) {
   const { createProduct } = useAddProduct()
@@ -30,7 +30,7 @@ export default function EditProductForm({ product }: Props) {
       name: product?.name ?? '',
       displayName: product?.displayName ?? '',
       available: product?.available ?? true,
-      price: product?.price.toNumber() ?? 0.0,
+      price: product?.price ?? 0.0,
       type: product?.type ?? '',
       families: product?.families ?? [''],
       description: product?.description ?? '',
@@ -50,7 +50,7 @@ export default function EditProductForm({ product }: Props) {
         <Paper radius="md" bg="#FFF5F5" p="xl">
           <Box>
             <Text align="center" fw={700}>
-              Edit/Create Product
+              {editing ? 'Edit' : 'Create'} Product
             </Text>
           </Box>
 

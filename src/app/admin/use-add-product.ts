@@ -1,14 +1,12 @@
 import { req } from '@/shared/client'
-import { ProductAttr } from '@/shared/product-types'
-import { Product } from '@prisma/client'
+import { ProductAttr, ProductDto } from '@/shared/product-types'
 import { useCallback, useState } from 'react'
 
 export function useAddProduct() {
-  const [product, setProduct] = useState<Product>()
+  const [product, setProduct] = useState<ProductDto>()
   const createProduct = useCallback(async (productAttr: ProductAttr) => {
     setProduct(
-      await req('/api/product', {
-        method: 'post',
+      await req('POST /product', {
         data: productAttr,
       }),
     )
