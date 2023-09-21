@@ -20,7 +20,7 @@ interface Props {
 export function ProductsTable({ products, openEdit, getProducts }: Props) {
   const { searchQuery, setSearchQuery, filterBySearch } = useProductTableSearch()
   const { selection, toggleRow } = useProductTableSelection()
-  const [opened, { open, close }] = useDisclosure(false)
+  const [isDeleteDialogOpen, { open: openDeleteDialog, close: closeDeleteDialog }] = useDisclosure(false)
   const [productToDelete, setProductToDelete] = useState<ProductDto | null>(null)
   const { deleteProduct } = useDeleteProduct(getProducts)
 
@@ -49,14 +49,14 @@ export function ProductsTable({ products, openEdit, getProducts }: Props) {
   }, [applySortAndFilter, products, reverseSortDirection, setSortedAndFilteredData, sortByKey])
 
   function closeModal() {
-    close()
+    closeDeleteDialog()
     setProductToDelete(null)
   }
 
   return (
     <Container>
       <Modal
-        opened={opened}
+        opened={isDeleteDialogOpen}
         onClose={closeModal}
         title={
           <Text align="center" tt="uppercase">
@@ -100,7 +100,7 @@ export function ProductsTable({ products, openEdit, getProducts }: Props) {
             toggleRow={toggleRow}
             openEdit={openEdit}
             openDelete={(product) => {
-              open()
+              openDeleteDialog()
               setProductToDelete(product)
             }}
           />

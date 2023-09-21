@@ -15,22 +15,22 @@ export function ProductsTableBody({ sortedAndFilteredData, selection, toggleRow,
   return (
     <tbody>
       {sortedAndFilteredData && sortedAndFilteredData.length > 0 ? (
-        sortedAndFilteredData.map((row) => (
-          <tr key={row.name}>
+        sortedAndFilteredData.map((product) => (
+          <tr key={product.name}>
             <td>
               <Checkbox
-                checked={selection.includes(row.name)}
-                onChange={() => toggleRow(row.name)}
+                checked={selection.includes(product.name)}
+                onChange={() => toggleRow(product.name)}
                 transitionDuration={0}
               />
             </td>
-            <td>{row.name}</td>
-            <td>{row.price.toString()}</td>
-            <td>{row.type}</td>
-            <td>{row.families.toString()}</td>
+            <td>{product.name}</td>
+            <td>{product.price.toString()}</td>
+            <td>{product.type}</td>
+            <td>{product.families.join(', ')}</td>
             <td>
               <UnstyledButton
-                onClick={() => openEdit(row)}
+                onClick={() => openEdit(product)}
                 sx={{
                   '&:hover': {
                     color: 'red',
@@ -42,7 +42,7 @@ export function ProductsTableBody({ sortedAndFilteredData, selection, toggleRow,
             </td>
             <td>
               <UnstyledButton
-                onClick={() => openDelete(row)}
+                onClick={() => openDelete(product)}
                 sx={{
                   '&:hover': {
                     color: 'red',
