@@ -1,12 +1,12 @@
 import { Carousel } from '@mantine/carousel'
-import { useStyles } from './menu-header-slider.styles'
-import { Product, productTypes } from '../../shared/product-types'
 import { Container } from '@mantine/core'
+import { productTypes } from '../../shared/product-types'
 import { MenuHeaderItem } from './menu-header-item'
 import { MenuHeaderItemViewall } from './menu-header-item-viewall'
+import { useStyles } from './menu-header-slider.styles'
 
 interface Props {
-  productType: Product['type']
+  productType: keyof typeof productTypes
   preHighlight?: boolean
   setOpened?: React.Dispatch<React.SetStateAction<boolean>>
 }
