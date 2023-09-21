@@ -1,6 +1,6 @@
 'use client'
 
-import { SubmitButton } from '@/components'
+import { RoundButton } from '@/components'
 import { PageHeader } from '@/components/page-header/page-header'
 import { ProductDto } from '@/shared/product-types'
 import { Container, Group, Modal } from '@mantine/core'
@@ -24,12 +24,12 @@ export default function Admin() {
           close()
         }}
       >
-        <EditProductForm product={editingProduct} />
+        <EditProductForm product={editingProduct} getProducts={getProducts} onClose={close} />
       </Modal>
 
       <PageHeader title="admin" />
       <Group position="center" m={10}>
-        <SubmitButton text="Create Product" onClick={open} />
+        <RoundButton text="Create Product" onClick={open} />
       </Group>
       <Container fluid px="10rem">
         <ProductsTable
@@ -38,6 +38,7 @@ export default function Admin() {
             setEditingProduct(product)
             open()
           }}
+          getProducts={getProducts}
         />
       </Container>
     </>

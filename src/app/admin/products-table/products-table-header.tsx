@@ -54,6 +54,7 @@ export function ProductsTableHeader({ reverseSortDirection, sortByKey, applySort
         </Th>
         <Th sorted={sortByKey === 'families'}>Families</Th>
         <Th style={{ width: rem(40) }}>{''}</Th>
+        <Th style={{ width: rem(40) }}>{''}</Th>
       </tr>
     </thead>
   )

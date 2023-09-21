@@ -1,6 +1,6 @@
 'use client'
 
-import { SubmitButton } from '@/components'
+import { RoundButton } from '@/components'
 import { ProductDto } from '@/shared/product-types'
 import {
   Box,
@@ -21,8 +21,10 @@ import { useAddProduct } from '../use-add-product'
 
 interface Props {
   product?: ProductDto
+  getProducts: () => Promise<void>
+  onClose: () => void
 }
-export default function EditProductForm({ product }: Props) {
+export default function EditProductForm({ product, getProducts, onClose }: Props) {
   const { createProduct } = useAddProduct()
   const [editing, setEditing] = useState(!!product)
   const form = useForm({
@@ -55,9 +57,11 @@ export default function EditProductForm({ product }: Props) {
           </Box>
 
           <form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault()
               createProduct(form.values)
+              await getProducts()
+              onClose()
             }}
           >
             <Stack spacing="xl">
@@ -139,7 +143,7 @@ export default function EditProductForm({ product }: Props) {
                 radius="sm"
                 {...form.getInputProps('available')}
               />
-              <SubmitButton
+              <RoundButton
                 text={editing ? 'Update' : 'Submit'}
                 onClick={() => (editing ? console.log('Editing') : console.log('Creating'))}
               />

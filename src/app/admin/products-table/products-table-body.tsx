@@ -1,15 +1,17 @@
 import { ProductDto } from '@/shared/product-types'
 import { Checkbox, UnstyledButton } from '@mantine/core'
-import { Edit } from 'tabler-icons-react'
+
+import { Edit, Trash } from 'tabler-icons-react'
 
 interface Props {
   sortedAndFilteredData: ProductDto[]
   selection: string[]
   toggleRow: (id: string) => void
   openEdit: (product: ProductDto) => void
+  openDelete: (product: ProductDto) => void
 }
 
-export function ProductsTableBody({ sortedAndFilteredData, selection, toggleRow, openEdit }: Props) {
+export function ProductsTableBody({ sortedAndFilteredData, selection, toggleRow, openEdit, openDelete }: Props) {
   return (
     <tbody>
       {sortedAndFilteredData && sortedAndFilteredData.length > 0 ? (
@@ -36,6 +38,18 @@ export function ProductsTableBody({ sortedAndFilteredData, selection, toggleRow,
                 }}
               >
                 <Edit />
+              </UnstyledButton>
+            </td>
+            <td>
+              <UnstyledButton
+                onClick={() => openDelete(row)}
+                sx={{
+                  '&:hover': {
+                    color: 'red',
+                  },
+                }}
+              >
+                <Trash />
               </UnstyledButton>
             </td>
           </tr>

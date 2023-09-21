@@ -1,9 +1,9 @@
 import { req } from '@/shared/client'
-import { Product } from '@prisma/client'
+import { ProductDto } from '@/shared/product-types'
 import { useCallback, useEffect, useState } from 'react'
 
 export function useGetProducts() {
-  const [products, setProducts] = useState<Product[]>([])
+  const [products, setProducts] = useState<ProductDto[]>([])
   const getProducts = useCallback(async () => {
     try {
       const fetchedProducts = await req('GET /products', {})
