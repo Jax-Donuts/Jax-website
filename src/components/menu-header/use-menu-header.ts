@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 
 export function useMenuHeader() {
   const getProducts = useCallback(async () => {
-    const data = await req('/api/products', { method: 'get' })
+    const data = await req('GET /products', {})
   }, [])
   return
 }

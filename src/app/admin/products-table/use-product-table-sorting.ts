@@ -1,17 +1,17 @@
-import { Product } from '@prisma/client'
+import { ProductDto } from '@/shared/product-types'
 import { useCallback, useState } from 'react'
 
 export function useProductTableSorting(
-  data: Product[],
+  products: ProductDto[],
   searchQuery: string,
-  filterBySearch: (data: Product[], search: string) => Product[],
+  filterBySearch: (data: ProductDto[], search: string) => ProductDto[],
 ) {
-  const [sortedAndFilteredData, setSortedAndFilteredData] = useState(data)
-  const [sortByKey, setSortByKey] = useState<keyof Product | null>(null)
+  const [sortedAndFilteredData, setSortedAndFilteredData] = useState(products)
+  const [sortByKey, setSortByKey] = useState<keyof ProductDto | null>(null)
   const [reverseSortDirection, setReverseSortDirection] = useState(false)
 
   const applySortAndFilter = useCallback(
-    (data: Product[], payload: { sortByKey: keyof Product | null; reversed: boolean; search: string }) => {
+    (data: ProductDto[], payload: { sortByKey: keyof ProductDto | null; reversed: boolean; search: string }) => {
       const { sortByKey } = payload
 
       if (!sortByKey) return filterBySearch(data, payload.search)
@@ -31,13 +31,13 @@ export function useProductTableSorting(
   )
 
   const applySortingToggles = useCallback(
-    (field: keyof Product) => {
+    (field: keyof ProductDto) => {
       const reversed = field === sortByKey ? !reverseSortDirection : false
       setReverseSortDirection(reversed)
       setSortByKey(field)
-      setSortedAndFilteredData(applySortAndFilter(data, { sortByKey: field, reversed, search: searchQuery }))
+      setSortedAndFilteredData(applySortAndFilter(products, { sortByKey: field, reversed, search: searchQuery }))
     },
-    [data, reverseSortDirection, searchQuery, sortByKey, applySortAndFilter],
+    [products, reverseSortDirection, searchQuery, sortByKey, applySortAndFilter],
   )
 
   return {

@@ -1,34 +1,36 @@
+import { ProductDto } from '@/shared/product-types'
 import { Checkbox, UnstyledButton } from '@mantine/core'
-import { Product } from '@prisma/client'
-import { Edit } from 'tabler-icons-react'
+
+import { Edit, Trash } from 'tabler-icons-react'
 
 interface Props {
-  sortedAndFilteredData: Product[]
+  sortedAndFilteredData: ProductDto[]
   selection: string[]
   toggleRow: (id: string) => void
-  openEdit: (product: Product) => void
+  openEdit: (product: ProductDto) => void
+  openDelete: (product: ProductDto) => void
 }
 
-export function ProductsTableBody({ sortedAndFilteredData, selection, toggleRow, openEdit }: Props) {
+export function ProductsTableBody({ sortedAndFilteredData, selection, toggleRow, openEdit, openDelete }: Props) {
   return (
     <tbody>
       {sortedAndFilteredData && sortedAndFilteredData.length > 0 ? (
-        sortedAndFilteredData.map((row) => (
-          <tr key={row.name}>
+        sortedAndFilteredData.map((product) => (
+          <tr key={product.name}>
             <td>
               <Checkbox
-                checked={selection.includes(row.name)}
-                onChange={() => toggleRow(row.name)}
+                checked={selection.includes(product.name)}
+                onChange={() => toggleRow(product.name)}
                 transitionDuration={0}
               />
             </td>
-            <td>{row.name}</td>
-            <td>{row.price.toString()}</td>
-            <td>{row.type}</td>
-            <td>{row.families.toString()}</td>
+            <td>{product.name}</td>
+            <td>{product.price.toString()}</td>
+            <td>{product.type}</td>
+            <td>{product.families.join(', ')}</td>
             <td>
               <UnstyledButton
-                onClick={() => openEdit(row)}
+                onClick={() => openEdit(product)}
                 sx={{
                   '&:hover': {
                     color: 'red',
@@ -36,6 +38,18 @@ export function ProductsTableBody({ sortedAndFilteredData, selection, toggleRow,
                 }}
               >
                 <Edit />
+              </UnstyledButton>
+            </td>
+            <td>
+              <UnstyledButton
+                onClick={() => openDelete(product)}
+                sx={{
+                  '&:hover': {
+                    color: 'red',
+                  },
+                }}
+              >
+                <Trash />
               </UnstyledButton>
             </td>
           </tr>

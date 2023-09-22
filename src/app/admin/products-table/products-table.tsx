@@ -1,7 +1,10 @@
-import { Container, ScrollArea, Table, Text, TextInput } from '@mantine/core'
-import { Product } from '@prisma/client'
-import { useCallback } from 'react'
+import { RoundButton } from '@/components'
+import { ProductDto } from '@/shared/product-types'
+import { Container, Modal, ScrollArea, SimpleGrid, Table, Text, TextInput } from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
+import { useCallback, useEffect, useState } from 'react'
 import { Search } from 'tabler-icons-react'
+import { useDeleteProduct } from '../use-delete-product'
 import { ProductsTableBody } from './products-table-body'
 import { ProductsTableHeader } from './products-table-header'
 import { useProductTableSearch } from './use-product-table-search'
@@ -9,13 +12,17 @@ import { useProductTableSelection } from './use-product-table-selection'
 import { useProductTableSorting } from './use-product-table-sorting'
 
 interface Props {
-  products: Product[]
-  openEdit: (product: Product) => void
+  products: ProductDto[]
+  openEdit: (product: ProductDto) => void
+  getProducts: () => Promise<void>
 }
 
-export function ProductsTable({ products, openEdit }: Props) {
+export function ProductsTable({ products, openEdit, getProducts }: Props) {
   const { searchQuery, setSearchQuery, filterBySearch } = useProductTableSearch()
   const { selection, toggleRow } = useProductTableSelection()
+  const [isDeleteDialogOpen, { open: openDeleteDialog, close: closeDeleteDialog }] = useDisclosure(false)
+  const [productToDelete, setProductToDelete] = useState<ProductDto | null>(null)
+  const { deleteProduct } = useDeleteProduct(getProducts)
 
   const {
     reverseSortDirection,
@@ -37,8 +44,42 @@ export function ProductsTable({ products, openEdit }: Props) {
     [products, reverseSortDirection, setSearchQuery, setSortedAndFilteredData, sortByKey, applySortAndFilter],
   )
 
+  useEffect(() => {
+    setSortedAndFilteredData(applySortAndFilter(products, { sortByKey, reversed: reverseSortDirection, search: '' }))
+  }, [applySortAndFilter, products, reverseSortDirection, setSortedAndFilteredData, sortByKey])
+
+  function closeModal() {
+    closeDeleteDialog()
+    setProductToDelete(null)
+  }
+
   return (
     <Container>
+      <Modal
+        opened={isDeleteDialogOpen}
+        onClose={closeModal}
+        title={
+          <Text align="center" tt="uppercase">
+            delete donut
+          </Text>
+        }
+      >
+        <div style={{ border: '2px solid #fa5252', padding: 10, borderRadius: 5 }}>
+          <Text align="center">Are you sure you want to delete</Text>
+          <Text align="center">&quot;{productToDelete?.name}&quot;</Text>
+          <SimpleGrid cols={2} mt={20}>
+            <RoundButton text="Cancel" onClick={closeModal} />
+            <RoundButton
+              text="Yes"
+              onClick={() => {
+                if (productToDelete) deleteProduct(productToDelete?.id)
+                else alert('null id')
+                closeModal()
+              }}
+            />
+          </SimpleGrid>
+        </div>
+      </Modal>
       <ScrollArea>
         <TextInput
           placeholder="Search by any field"
@@ -58,6 +99,10 @@ export function ProductsTable({ products, openEdit }: Props) {
             selection={selection}
             toggleRow={toggleRow}
             openEdit={openEdit}
+            openDelete={(product) => {
+              openDeleteDialog()
+              setProductToDelete(product)
+            }}
           />
         </Table>
         {sortedAndFilteredData.length === 0 ? (

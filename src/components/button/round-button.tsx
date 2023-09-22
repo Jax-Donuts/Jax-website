@@ -1,14 +1,14 @@
 'use client'
 
 import { Button } from '@mantine/core'
-import { useStyles } from './submit-button.styles'
+import { useStyles } from './round-button.styles'
 
 interface Props {
   text: string
   onClick: () => void
 }
 
-export function SubmitButton({ text, onClick }: Props) {
+export function RoundButton({ text, onClick }: Props) {
   const { classes } = useStyles()
 
   return (

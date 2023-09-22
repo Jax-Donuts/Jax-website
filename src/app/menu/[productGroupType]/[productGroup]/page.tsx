@@ -1,14 +1,13 @@
 'use client'
 
 import { PageHeader } from '@/components/page-header/page-header'
-import { Product } from '@/shared/product-types'
 import { Container, Text } from '@mantine/core'
 import { useMemo } from 'react'
 import { useMenu } from './use-menu'
 
 type MenuRouteParams = {
   productGroupType: 'productType' | 'productFamily'
-  productGroup: Product['families'][number] | Product['type']
+  productGroup: string
 }
 
 export default function Menu({ params }: { params: MenuRouteParams }) {

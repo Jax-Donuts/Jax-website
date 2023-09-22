@@ -1,25 +1,23 @@
 'use client'
 
-import { SubmitButton } from '@/components'
+import { RoundButton } from '@/components'
 import { PageHeader } from '@/components/page-header/page-header'
-import { Container, Group, Modal } from '@mantine/core'
+import { ProductDto } from '@/shared/product-types'
+import { Container, Group, LoadingOverlay, Modal } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { Product } from '@prisma/client'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import EditProductForm from './edit-product-form'
 import { ProductsTable } from './products-table/products-table'
 import { useGetProducts } from './use-get-products'
 
 export default function Admin() {
   const [opened, { open, close }] = useDisclosure(false)
-  const [editingProduct, setEditingProduct] = useState<Product>()
-  const { products, getProducts } = useGetProducts()
-  useEffect(() => {
-    getProducts()
-  }, [getProducts])
+  const [editingProduct, setEditingProduct] = useState<ProductDto>()
+  const { products, getProducts, isLoading } = useGetProducts()
 
   return (
     <>
+      <LoadingOverlay visible={isLoading} overlayBlur={2} />
       <Modal
         opened={opened}
         onClose={() => {
@@ -27,12 +25,12 @@ export default function Admin() {
           close()
         }}
       >
-        <EditProductForm product={editingProduct} />
+        <EditProductForm product={editingProduct} getProducts={getProducts} onClose={close} />
       </Modal>
 
       <PageHeader title="admin" />
       <Group position="center" m={10}>
-        <SubmitButton text="Create Product" onClick={open} />
+        <RoundButton text="Create Product" onClick={open} />
       </Group>
       <Container fluid px="10rem">
         <ProductsTable
@@ -41,6 +39,7 @@ export default function Admin() {
             setEditingProduct(product)
             open()
           }}
+          getProducts={getProducts}
         />
       </Container>
     </>

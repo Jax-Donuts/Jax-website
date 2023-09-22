@@ -1,24 +1,28 @@
-import { Product } from '@prisma/client'
+import { req } from '@/shared/client'
+import { ProductDto } from '@/shared/product-types'
+import { useDisclosure } from '@mantine/hooks'
 import { useCallback, useEffect, useState } from 'react'
 
 export function useGetProducts() {
-  const [products, setProducts] = useState<Product[]>([])
+  const [isLoading, { open, close }] = useDisclosure(false)
+  const [products, setProducts] = useState<ProductDto[]>([])
   const getProducts = useCallback(async () => {
     try {
-      const response = await fetch('/api/products', { method: 'GET' })
-      if (!response.ok) {
-        throw new Error('Failed to fetch products')
-      }
-      const fetchedProducts = await response.json()
+      console.log('getProducts called?')
+      open()
+      const fetchedProducts = await req('GET /products', {})
       setProducts(fetchedProducts)
+      close()
     } catch (error) {
       console.error('Error fetching products', error)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
+    console.log('useEffect getProducts')
     getProducts()
   }, [getProducts])
 
-  return { products, getProducts }
+  return { products, getProducts, isLoading }
 }

@@ -1,6 +1,7 @@
 'use client'
 
-import { SubmitButton } from '@/components'
+import { RoundButton } from '@/components'
+import { ProductDto } from '@/shared/product-types'
 import {
   Box,
   Checkbox,
@@ -15,14 +16,15 @@ import {
   Textarea,
 } from '@mantine/core'
 import { isInRange, isNotEmpty, useForm } from '@mantine/form'
-import { Product } from '@prisma/client'
 import { useState } from 'react'
 import { useAddProduct } from '../use-add-product'
 
 interface Props {
-  product?: Product
+  product?: ProductDto
+  getProducts: () => Promise<void>
+  onClose: () => void
 }
-export default function EditProductForm({ product }: Props) {
+export default function EditProductForm({ product, getProducts, onClose }: Props) {
   const { createProduct } = useAddProduct()
   const [editing, setEditing] = useState(!!product)
   const form = useForm({
@@ -30,7 +32,7 @@ export default function EditProductForm({ product }: Props) {
       name: product?.name ?? '',
       displayName: product?.displayName ?? '',
       available: product?.available ?? true,
-      price: product?.price.toNumber() ?? 0.0,
+      price: product?.price ?? 0.0,
       type: product?.type ?? '',
       families: product?.families ?? [''],
       description: product?.description ?? '',
@@ -50,14 +52,16 @@ export default function EditProductForm({ product }: Props) {
         <Paper radius="md" bg="#FFF5F5" p="xl">
           <Box>
             <Text align="center" fw={700}>
-              Edit/Create Product
+              {editing ? 'Edit' : 'Create'} Product
             </Text>
           </Box>
 
           <form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault()
               createProduct(form.values)
+              await getProducts()
+              onClose()
             }}
           >
             <Stack spacing="xl">
@@ -139,7 +143,7 @@ export default function EditProductForm({ product }: Props) {
                 radius="sm"
                 {...form.getInputProps('available')}
               />
-              <SubmitButton
+              <RoundButton
                 text={editing ? 'Update' : 'Submit'}
                 onClick={() => (editing ? console.log('Editing') : console.log('Creating'))}
               />
