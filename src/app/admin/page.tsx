@@ -25,7 +25,12 @@ export default function Admin() {
           close()
         }}
       >
-        <EditProductForm product={editingProduct} getProducts={getProducts} onClose={close} />
+        <EditProductForm
+          product={editingProduct}
+          getProducts={getProducts}
+          onClose={close}
+          setProduct={setEditingProduct}
+        />
       </Modal>
 
       <PageHeader title="admin" />

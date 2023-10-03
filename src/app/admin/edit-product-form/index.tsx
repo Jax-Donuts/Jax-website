@@ -16,17 +16,21 @@ import {
   Textarea,
 } from '@mantine/core'
 import { isInRange, isNotEmpty, useForm } from '@mantine/form'
-import { useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import { useAddProduct } from '../use-add-product'
+import { useEditProduct } from '../use-edit-product'
 
 interface Props {
   product?: ProductDto
   getProducts: () => Promise<void>
   onClose: () => void
+  setProduct: Dispatch<SetStateAction<ProductDto | undefined>>
 }
-export default function EditProductForm({ product, getProducts, onClose }: Props) {
-  const { createProduct } = useAddProduct()
-  const [editing, setEditing] = useState(!!product)
+export default function EditProductForm({ product, getProducts, onClose, setProduct }: Props) {
+  const { createProduct } = useAddProduct(getProducts)
+
+  const { editProduct } = useEditProduct(getProducts)
+
   const form = useForm({
     initialValues: {
       name: product?.name ?? '',
@@ -52,16 +56,21 @@ export default function EditProductForm({ product, getProducts, onClose }: Props
         <Paper radius="md" bg="#FFF5F5" p="xl">
           <Box>
             <Text align="center" fw={700}>
-              {editing ? 'Edit' : 'Create'} Product
+              {product ? 'Edit' : 'Create'} Product
             </Text>
           </Box>
 
           <form
             onSubmit={async (e) => {
               e.preventDefault()
-              createProduct(form.values)
-              await getProducts()
+              if (product) {
+                const editedProductData = { ...form.values }
+                await editProduct(product.id, editedProductData)
+              } else {
+                createProduct(form.values)
+              }
               onClose()
+              setProduct(undefined)
             }}
           >
             <Stack spacing="xl">
@@ -143,10 +152,7 @@ export default function EditProductForm({ product, getProducts, onClose }: Props
                 radius="sm"
                 {...form.getInputProps('available')}
               />
-              <RoundButton
-                text={editing ? 'Update' : 'Submit'}
-                onClick={() => (editing ? console.log('Editing') : console.log('Creating'))}
-              />
+              <RoundButton text={product ? 'Update' : 'Submit'} onClick={() => {}} />
             </Stack>
           </form>
         </Paper>
