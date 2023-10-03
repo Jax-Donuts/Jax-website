@@ -8,7 +8,6 @@ export function useGetProducts() {
   const [products, setProducts] = useState<ProductDto[]>([])
   const getProducts = useCallback(async () => {
     try {
-      console.log('getProducts called?')
       open()
       const fetchedProducts = await req('GET /products', {})
       setProducts(fetchedProducts)
@@ -20,7 +19,6 @@ export function useGetProducts() {
   }, [])
 
   useEffect(() => {
-    console.log('useEffect getProducts')
     getProducts()
   }, [getProducts])
 

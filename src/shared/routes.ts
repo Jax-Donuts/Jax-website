@@ -11,6 +11,7 @@ export interface Routes {
   'GET /products': JaxRequest<ProductDto[]>
   'POST /product': JaxRequest<ProductDto, ProductAttr>
   'DELETE /product/[id]': JaxRequest<void, undefined, { id: string }>
+  'PUT /product/[id]': JaxRequest<ProductDto, ProductAttr, { id: string }>
 }
 
 export type Response<T extends keyof Routes> = NextResponse<Routes[T]['response']>
