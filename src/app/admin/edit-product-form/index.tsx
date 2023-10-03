@@ -64,12 +64,9 @@ export default function EditProductForm({ product, getProducts, onClose, setProd
             onSubmit={async (e) => {
               e.preventDefault()
               if (product) {
-                console.log('making changes')
                 const editedProductData = { ...form.values }
-                console.log(editedProductData)
                 await editProduct(product.id, editedProductData)
               } else {
-                console.log('making new product')
                 createProduct(form.values)
               }
               onClose()
@@ -155,10 +152,7 @@ export default function EditProductForm({ product, getProducts, onClose, setProd
                 radius="sm"
                 {...form.getInputProps('available')}
               />
-              <RoundButton
-                text={product ? 'Update' : 'Submit'}
-                onClick={() => (product ? console.log('Editing') : console.log('Creating'))}
-              />
+              <RoundButton text={product ? 'Update' : 'Submit'} onClick={() => {}} />
             </Stack>
           </form>
         </Paper>

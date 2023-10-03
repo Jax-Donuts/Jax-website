@@ -72,7 +72,6 @@ export function ProductsTable({ products, openEdit, getProducts }: Props) {
             <RoundButton
               text="Yes"
               onClick={() => {
-                console.log('Deleting:', productToDelete)
                 if (productToDelete) deleteProduct(productToDelete?.id)
                 else alert('null id')
                 closeModal()

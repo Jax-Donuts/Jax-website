@@ -14,7 +14,6 @@
     "**/node_modules": false
   },
   "eslint.validate": ["json"],
-  "cSpell.words": ["mantine"],
   "indentRainbow.indicatorStyle": "light",
   "indentRainbow.lightIndicatorStyleLineWidth": 2,
   "indentRainbow.colors": [
