@@ -1,10 +1,9 @@
 'use client'
 
-import { Button, Card, Container, Grid, Space, Stack, Table, Text, Title } from '@mantine/core'
-import { ClockHour4, Location as LocationIcon, Phone } from 'tabler-icons-react'
-
 import { PageHeader } from '@/components/page-header/page-header'
+import { Button, Card, Container, Grid, Space, Stack, Table, Text, Title } from '@mantine/core'
 import Link from 'next/link'
+import { ClockHour4, Location as LocationIcon, Phone } from 'tabler-icons-react'
 import { LocationAddress } from '../../shared/constants'
 
 export default function ContactUs() {
@@ -32,7 +31,7 @@ export default function ContactUs() {
           <Grid.Col span={4}>
             <Stack mih="100%" spacing="xl" justify="space-between" align="stretch">
               <Card bg="#FFF5F5" radius="xl" sx={() => ({ textAlign: 'center' })}>
-                <ClockHour4 color="#fa5252" size="10rem" />
+                <ClockHour4 color="#FA5252" size="10rem" />
                 <Title pb="1rem">Hours*</Title>
                 <Table captionSide="bottom" verticalSpacing="md">
                   <caption>
@@ -47,7 +46,7 @@ export default function ContactUs() {
           <Grid.Col span={4}>
             <Stack mih="100%" spacing="xl" justify="space-between" align="stretch">
               <Card bg="#FFF5F5" radius="xl" sx={() => ({ textAlign: 'center' })}>
-                <LocationIcon color="#fa5252" size="10rem" />
+                <LocationIcon color="#FA5252" size="10rem" />
                 <Title align="center">Address</Title>
                 <Text align="center">
                   Come visit us!
@@ -58,7 +57,7 @@ export default function ContactUs() {
                 </Text>
               </Card>
               <Card bg="#FFF5F5" radius="xl" sx={() => ({ textAlign: 'center' })}>
-                <Phone color="#fa5252" size="10rem" />
+                <Phone color="#FA5252" size="10rem" />
                 <Title>Call Us</Title>
                 <Text align="center">
                   Want to check if we have your favorites or place an order for pickup?

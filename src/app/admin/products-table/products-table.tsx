@@ -1,4 +1,4 @@
-import { RoundButton } from '@/components'
+import { SubmitButton } from '@/components'
 import { ProductDto } from '@/shared/product-types'
 import { Container, Modal, ScrollArea, SimpleGrid, Table, Text, TextInput } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
@@ -68,8 +68,8 @@ export function ProductsTable({ products, openEdit, getProducts }: Props) {
           <Text align="center">Are you sure you want to delete</Text>
           <Text align="center">&quot;{productToDelete?.name}&quot;</Text>
           <SimpleGrid cols={2} mt={20}>
-            <RoundButton text="Cancel" onClick={closeModal} />
-            <RoundButton
+            <SubmitButton text="Cancel" onClick={closeModal} />
+            <SubmitButton
               text="Yes"
               onClick={() => {
                 if (productToDelete) deleteProduct(productToDelete?.id)

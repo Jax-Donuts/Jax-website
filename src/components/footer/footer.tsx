@@ -16,7 +16,15 @@ export default function Footer() {
   const { classes } = useStyles()
   const items = links.map((link) => (
     <Link key={link.label} href={link.link} style={{ fontFamily: archivo.style.fontFamily }}>
-      <Text c="red" tt="uppercase">
+      <Text
+        color="black"
+        tt="uppercase"
+        sx={{
+          '&:hover': {
+            color: '#EF4547',
+          },
+        }}
+      >
         {link.label}
       </Text>
     </Link>
@@ -28,7 +36,7 @@ export default function Footer() {
         <Link href="/">
           <Stack align="center" spacing={5}>
             <Image src="/logo.png" alt="logo" width={48} height={48} />
-            <Title size="1.5rem" align="left" color="#fa5252" ta="center">
+            <Title size="1.5rem" align="left" color="#FA5252" ta="center">
               Jax Donut
             </Title>
           </Stack>

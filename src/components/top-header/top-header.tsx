@@ -1,6 +1,7 @@
 'use client'
 
-import { Button, Container, Grid, Group, Text, Title } from '@mantine/core'
+import { HeaderButton } from '@/components'
+import { Container, Grid, Group, Title } from '@mantine/core'
 import Image from 'next/image'
 import Link from 'next/link'
 import { MenuHeader } from '../menu-header/menu-header'
@@ -36,30 +37,20 @@ export function TopHeader() {
         <Grid.Col span="auto">
           <Group position="right" spacing="xl">
             <Link href="/">
-              <Button variant="subtle" size="md" tt="uppercase">
-                <Text>home</Text>
-              </Button>
+              <HeaderButton text="Home"></HeaderButton>
             </Link>
             <MenuHeader />
             <Link href="/location" passHref>
-              <Button variant="subtle" size="md" tt="uppercase">
-                location
-              </Button>
+              <HeaderButton text="Location"></HeaderButton>
             </Link>
             <Link href="/contact" passHref>
-              <Button variant="subtle" size="md" tt="uppercase">
-                contact us
-              </Button>
+              <HeaderButton text="Contact Us"></HeaderButton>
             </Link>
             <Link href="/about">
-              <Button variant="subtle" size="md" tt="uppercase">
-                about
-              </Button>
+              <HeaderButton text="About"></HeaderButton>
             </Link>
             <Link href="/admin">
-              <Button variant="subtle" size="md" tt="uppercase">
-                admin
-              </Button>
+              <HeaderButton text="Admin"></HeaderButton>
             </Link>
           </Group>
         </Grid.Col>
