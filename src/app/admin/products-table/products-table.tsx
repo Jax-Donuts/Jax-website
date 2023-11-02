@@ -64,7 +64,7 @@ export function ProductsTable({ products, openEdit, getProducts }: Props) {
           </Text>
         }
       >
-        <div style={{ border: '2px solid #fa5252', padding: 10, borderRadius: 5 }}>
+        <div style={{ border: '2px solid #FA5252', padding: 10, borderRadius: 5 }}>
           <Text align="center">Are you sure you want to delete</Text>
           <Text align="center">&quot;{productToDelete?.name}&quot;</Text>
           <SimpleGrid cols={2} mt={20}>

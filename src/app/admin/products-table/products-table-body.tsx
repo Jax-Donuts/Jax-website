@@ -1,6 +1,6 @@
+import { MainColors } from '@/shared/constants'
 import { ProductDto } from '@/shared/product-types'
 import { Checkbox, UnstyledButton } from '@mantine/core'
-
 import { Edit, Trash } from 'tabler-icons-react'
 
 interface Props {
@@ -33,7 +33,7 @@ export function ProductsTableBody({ sortedAndFilteredData, selection, toggleRow,
                 onClick={() => openEdit(product)}
                 sx={{
                   '&:hover': {
-                    color: 'red',
+                    color: MainColors.RedHover,
                   },
                 }}
               >
@@ -45,7 +45,7 @@ export function ProductsTableBody({ sortedAndFilteredData, selection, toggleRow,
                 onClick={() => openDelete(product)}
                 sx={{
                   '&:hover': {
-                    color: 'red',
+                    color: MainColors.RedHover,
                   },
                 }}
               >

@@ -4,7 +4,7 @@ import { PageHeader } from '@/components/page-header/page-header'
 import { Button, Card, Container, Grid, Space, Stack, Table, Text, Title } from '@mantine/core'
 import Link from 'next/link'
 import { ClockHour4, Location as LocationIcon, Phone } from 'tabler-icons-react'
-import { LocationAddress } from '../../shared/constants'
+import { LocationAddress, MainColors } from '../../shared/constants'
 
 export default function ContactUs() {
   const elements = [
@@ -30,8 +30,8 @@ export default function ContactUs() {
         <Grid grow>
           <Grid.Col span={4}>
             <Stack mih="100%" spacing="xl" justify="space-between" align="stretch">
-              <Card bg="#FFF5F5" radius="xl" sx={() => ({ textAlign: 'center' })}>
-                <ClockHour4 color="#FA5252" size="10rem" />
+              <Card bg={MainColors.PinkWhiteBG} radius="xl" sx={() => ({ textAlign: 'center' })}>
+                <ClockHour4 color={MainColors.RedStatic} size="10rem" />
                 <Title pb="1rem">Hours*</Title>
                 <Table captionSide="bottom" verticalSpacing="md">
                   <caption>
@@ -45,19 +45,29 @@ export default function ContactUs() {
           </Grid.Col>
           <Grid.Col span={4}>
             <Stack mih="100%" spacing="xl" justify="space-between" align="stretch">
-              <Card bg="#FFF5F5" radius="xl" sx={() => ({ textAlign: 'center' })}>
-                <LocationIcon color="#FA5252" size="10rem" />
+              <Card bg={MainColors.PinkWhiteBG} radius="xl" sx={() => ({ textAlign: 'center' })}>
+                <LocationIcon color={MainColors.RedStatic} size="10rem" />
                 <Title align="center">Address</Title>
                 <Text align="center">
                   Come visit us!
                   <br />
                   <Link href="/location" passHref>
-                    <Button>{LocationAddress}</Button>
+                    <Button
+                      variant="subtle"
+                      sx={{
+                        color: 'black',
+                        '&:hover': {
+                          backgroundColor: 'transparent',
+                        },
+                      }}
+                    >
+                      {LocationAddress}
+                    </Button>
                   </Link>
                 </Text>
               </Card>
-              <Card bg="#FFF5F5" radius="xl" sx={() => ({ textAlign: 'center' })}>
-                <Phone color="#FA5252" size="10rem" />
+              <Card bg={MainColors.PinkWhiteBG} radius="xl" sx={() => ({ textAlign: 'center' })}>
+                <Phone color={MainColors.RedStatic} size="10rem" />
                 <Title>Call Us</Title>
                 <Text align="center">
                   Want to check if we have your favorites or place an order for pickup?

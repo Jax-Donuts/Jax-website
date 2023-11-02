@@ -13,7 +13,7 @@ export function SubmitButton({ text, onClick }: Props) {
 
   return (
     <>
-      <Button type="submit" variant="filled" radius="xl" className={classes.button} onClick={() => onClick()}>
+      <Button type="submit" variant="filled" radius="xl" className={classes.button} onClick={onClick}>
         {text}
       </Button>
     </>
