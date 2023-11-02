@@ -1,6 +1,7 @@
 'use client'
 
-import { RoundButton } from '@/components'
+import { SubmitButton } from '@/components'
+import { MainColors } from '@/shared/constants'
 import { ProductDto } from '@/shared/product-types'
 import {
   Box,
@@ -53,7 +54,7 @@ export default function EditProductForm({ product, getProducts, onClose, setProd
   return (
     <>
       <Container>
-        <Paper radius="md" bg="#FFF5F5" p="xl">
+        <Paper radius="md" bg={MainColors.PinkWhiteBG} p="xl">
           <Box>
             <Text align="center" fw={700}>
               {product ? 'Edit' : 'Create'} Product
@@ -152,7 +153,7 @@ export default function EditProductForm({ product, getProducts, onClose, setProd
                 radius="sm"
                 {...form.getInputProps('available')}
               />
-              <RoundButton text={product ? 'Update' : 'Submit'} onClick={() => {}} />
+              <SubmitButton text={product ? 'Update' : 'Submit'} onClick={() => {}} />
             </Stack>
           </form>
         </Paper>

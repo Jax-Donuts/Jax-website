@@ -1,10 +1,11 @@
+import { MainColors } from '@/shared/constants'
 import { createStyles } from '@mantine/core'
 
 export const useStyles = createStyles((theme) => ({
   cityTitle: {
     'font-weight': 'bold',
     '&:hover': {
-      color: theme.colors.red[6],
+      color: MainColors.RedHover,
     },
     'text-decoration': 'none',
   },
@@ -12,7 +13,7 @@ export const useStyles = createStyles((theme) => ({
   mapButton: {
     backgroundColor: 'black',
     '&:hover': {
-      backgroundColor: theme.colors.red[6],
+      backgroundColor: MainColors.RedHover,
     },
   },
 }))

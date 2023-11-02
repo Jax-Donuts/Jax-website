@@ -1,3 +1,4 @@
+import { MainColors } from '@/shared/constants'
 import { createStyles } from '@mantine/core'
 
 export const useStyles = createStyles((theme) => ({
@@ -21,12 +22,12 @@ export const useStyles = createStyles((theme) => ({
     '&:hover': {
       boxShadow: theme.shadows.md,
       transform: 'scale(1.05)',
-      backgroundColor: '#ffe6ea',
+      backgroundColor: MainColors.PinkWhiteBG,
       borderColor: 'black',
-      border: '1px solid  #ffccd5',
+      border: `1px solid ${MainColors.RedStatic}`,
     },
   },
   preHighlight: {
-    backgroundColor: '#fff2f2',
+    backgroundColor: MainColors.PinkWhiteBG,
   },
 }))

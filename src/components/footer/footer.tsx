@@ -1,6 +1,7 @@
 'use client'
 
 import { archivo } from '@/app/emotion'
+import { MainColors } from '@/shared/constants'
 import { Container, Group, Stack, Text, Title } from '@mantine/core'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -16,7 +17,15 @@ export default function Footer() {
   const { classes } = useStyles()
   const items = links.map((link) => (
     <Link key={link.label} href={link.link} style={{ fontFamily: archivo.style.fontFamily }}>
-      <Text c="red" tt="uppercase">
+      <Text
+        color="black"
+        tt="uppercase"
+        sx={{
+          '&:hover': {
+            color: MainColors.RedHover,
+          },
+        }}
+      >
         {link.label}
       </Text>
     </Link>
@@ -28,7 +37,7 @@ export default function Footer() {
         <Link href="/">
           <Stack align="center" spacing={5}>
             <Image src="/logo.png" alt="logo" width={48} height={48} />
-            <Title size="1.5rem" align="left" color="#fa5252" ta="center">
+            <Title size="1.5rem" align="left" color={MainColors.RedStatic} ta="center">
               Jax Donut
             </Title>
           </Stack>

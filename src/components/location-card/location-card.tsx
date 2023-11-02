@@ -2,7 +2,7 @@
 
 import { Anchor, Button, Container, Text, Title } from '@mantine/core'
 import React from 'react'
-import { LocationAddress, LocationAddressGoogleMapsLink, LocationCity } from '../../shared/constants'
+import { LocationAddress, LocationAddressGoogleMapsLink, LocationCity, MainColors } from '../../shared/constants'
 import { useStyles } from './location-card.styles'
 import { useLocation } from './use-location'
 
@@ -20,7 +20,7 @@ export function LocationCard({ hideMap, hideTitle }: Props) {
     <React.Fragment>
       {!hideTitle ? (
         <Container>
-          <Title ta="center" m="sm" color="red">
+          <Title ta="center" m="sm" color={MainColors.RedStatic}>
             Our Shop
           </Title>
         </Container>

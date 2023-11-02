@@ -1,8 +1,8 @@
-import { UnstyledButton, Text } from '@mantine/core'
-
+import { MainColors } from '@/shared/constants'
+import { Text, UnstyledButton } from '@mantine/core'
+import Link from 'next/link'
 import { useStyles } from './menu-header-item.styles'
 import { useMenuHeaderItem } from './use-menu-header-item'
-import Link from 'next/link'
 
 interface Props {
   productType: string
@@ -29,7 +29,7 @@ export function MenuHeaderItemViewall({ productType, preHighlight, onClick }: Pr
         }}
       >
         {/* This is a temporary donut icon to display. We will replace with actual donut images */}
-        <IconComponent color={theme.colors['red'][6]} size="10rem" />
+        <IconComponent color={MainColors.RedStatic} size="10rem" />
         <Text size="sm" fw="bold" ff="Arial,Helvetica,sans-serif">
           {`view all ${productType}`.toUpperCase()}
         </Text>

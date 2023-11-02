@@ -1,13 +1,14 @@
 'use client'
 
-import { Box, Button, Card, Group, Space, Title } from '@mantine/core'
-
+import { GeneralButton } from '@/components'
+import { MainColors } from '@/shared/constants'
+import { Box, Card, Group, Space, Title } from '@mantine/core'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function TryNewProductCard() {
   return (
-    <Card shadow="sm" padding="lg" radius="xl" p={0} bg="#fff2f2" h="40vh">
+    <Card shadow="sm" padding="lg" radius="xl" p={0} bg={MainColors.PinkWhiteBG} h="40vh">
       <Group noWrap align="center" h="100%" grow>
         <Box miw="50%" h="100%" p="5%" style={{ position: 'relative', justifyContent: 'left' }}>
           <Image
@@ -24,24 +25,7 @@ export default function TryNewProductCard() {
           </Title>
           <Space h="md" />
           <Link href="/menu/productType/drinks" passHref>
-            <Button
-              radius={30}
-              size="lg"
-              bg="#fa5252"
-              sx={(theme) => ({
-                '&:hover': {
-                  color: 'black',
-                  backgroundColor: '#fa5252',
-                  transform: 'scale(1.05)',
-                },
-
-                '@media (max-width: 48em)': {
-                  fontSize: '0.9rem',
-                },
-              })}
-            >
-              Drinks
-            </Button>
+            <GeneralButton text="Drinks"></GeneralButton>
           </Link>
         </Box>
       </Group>

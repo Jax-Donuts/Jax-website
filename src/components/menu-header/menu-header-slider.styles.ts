@@ -1,3 +1,4 @@
+import { MainColors } from '@/shared/constants'
 import { createStyles } from '@mantine/core'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -18,6 +19,6 @@ export const useStyles = createStyles((_) => ({
     bottom: 0,
   },
   indicator: {
-    backgroundColor: 'red',
+    backgroundColor: MainColors.RedStatic,
   },
 }))

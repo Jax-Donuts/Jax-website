@@ -1,4 +1,6 @@
-export * from './button/round-button'
+export * from './button/general-button'
+export * from './button/header-button'
+export * from './button/submit-button'
 export * from './location-card/location-card'
 export * from './menu-header/menu-header'
 export * from './top-header/top-header'

@@ -38,23 +38,6 @@ export default function RootStyleRegistry({ children }: { children: React.ReactN
               color: 'inherit',
             },
           }),
-          components: {
-            Button: {
-              defaultProps: {
-                styles: {
-                  root: {
-                    color: 'black',
-                    '&:hover': {
-                      color: '#FF0000',
-                      backgroundColor: '#FFF5F5',
-                    },
-                  },
-                },
-                variant: 'subtle',
-                size: 'md',
-              },
-            },
-          },
           fontFamily: `${archivo.style.fontFamily},Arial,Helvetica,sans-serif`,
         }}
       >
