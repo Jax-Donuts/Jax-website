@@ -24,7 +24,7 @@ export const useStyles = createStyles((theme) => ({
       transform: 'scale(1.05)',
       backgroundColor: MainColors.PinkWhiteBG,
       borderColor: 'black',
-      border: '1px solid  #FA5252',
+      border: `1px solid ${MainColors.RedStatic}`,
     },
   },
   preHighlight: {

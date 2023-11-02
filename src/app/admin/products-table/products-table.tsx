@@ -1,4 +1,5 @@
 import { SubmitButton } from '@/components'
+import { MainColors } from '@/shared/constants'
 import { ProductDto } from '@/shared/product-types'
 import { Container, Modal, ScrollArea, SimpleGrid, Table, Text, TextInput } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
@@ -64,7 +65,7 @@ export function ProductsTable({ products, openEdit, getProducts }: Props) {
           </Text>
         }
       >
-        <div style={{ border: '2px solid #FA5252', padding: 10, borderRadius: 5 }}>
+        <div style={{ border: `2px solid ${MainColors.RedStatic}`, padding: 10, borderRadius: 5 }}>
           <Text align="center">Are you sure you want to delete</Text>
           <Text align="center">&quot;{productToDelete?.name}&quot;</Text>
           <SimpleGrid cols={2} mt={20}>
