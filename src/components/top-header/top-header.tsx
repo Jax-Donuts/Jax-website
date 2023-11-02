@@ -1,6 +1,7 @@
 'use client'
 
 import { HeaderButton } from '@/components'
+import { MainColors } from '@/shared/constants'
 import { Container, Grid, Group, Title } from '@mantine/core'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -27,7 +28,7 @@ export function TopHeader() {
           <Link href="/">
             <Group spacing="xs">
               <Image src="/logo.png" alt="logo" width={80} height={80} />
-              <Title size="3.5rem" align="left" color="red" fw={700}>
+              <Title size="3.5rem" align="left" color={MainColors.RedStatic} fw={700}>
                 Jax Donut
               </Title>
             </Group>

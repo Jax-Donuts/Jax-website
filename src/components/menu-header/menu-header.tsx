@@ -1,5 +1,6 @@
 'use client'
 
+import { MainColors } from '@/shared/constants'
 import { Button, Popover } from '@mantine/core'
 import { useState } from 'react'
 import { MenuHeaderDropdown } from './menu-header-dropdown'
@@ -27,7 +28,7 @@ export function MenuHeader() {
               bottom: '0px',
               left: '50%',
               transform: 'translate(-50%,0%)',
-              backgroundColor: '#EF4547',
+              backgroundColor: MainColors.RedHover,
               visibility: 'hidden',
               transition: 'all 0.3s ease-in-out',
             },
@@ -38,7 +39,7 @@ export function MenuHeader() {
             },
 
             '&:hover': {
-              color: '#EF4547',
+              color: MainColors.RedHover,
               backgroundColor: 'transparent',
             },
           }}

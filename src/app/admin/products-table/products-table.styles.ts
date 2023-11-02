@@ -1,3 +1,4 @@
+import { MainColors } from '@/shared/constants'
 import { createStyles, rem } from '@mantine/core'
 
 export const useStyles = createStyles((theme) => ({
@@ -10,7 +11,7 @@ export const useStyles = createStyles((theme) => ({
     padding: `${theme.spacing.xs} ${theme.spacing.md}`,
 
     '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+      backgroundColor: MainColors.RedHover,
     },
   },
 
