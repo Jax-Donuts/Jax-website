@@ -17,7 +17,7 @@ export default function OurShopCard() {
           <Space h="md" />
           <Container ta="center">
             <Link href="/location" passHref>
-              <GeneralButton text="Find"></GeneralButton>
+              <GeneralButton>Find</GeneralButton>
             </Link>
           </Container>
         </Box>

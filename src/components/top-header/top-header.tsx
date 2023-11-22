@@ -1,13 +1,19 @@
 'use client'
 
-import { HeaderButton } from '@/components'
+import { GeneralButton, HeaderButton } from '@/components'
 import { MainColors } from '@/shared/constants'
-import { Container, Grid, Group, Title } from '@mantine/core'
+import { Avatar, Container, Grid, Group, Title } from '@mantine/core'
+import { signIn, signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { MenuHeader } from '../menu-header/menu-header'
 
 export function TopHeader() {
+  const { data: session } = useSession()
+  const pathname = usePathname()
+  console.log(pathname)
+
   return (
     <Container
       size="fluid"
@@ -38,21 +44,42 @@ export function TopHeader() {
         <Grid.Col span="auto">
           <Group position="right" spacing="xl">
             <Link href="/">
-              <HeaderButton text="Home"></HeaderButton>
+              <HeaderButton>Home</HeaderButton>
             </Link>
             <MenuHeader />
             <Link href="/location" passHref>
-              <HeaderButton text="Location"></HeaderButton>
+              <HeaderButton>Location</HeaderButton>
             </Link>
             <Link href="/contact" passHref>
-              <HeaderButton text="Contact Us"></HeaderButton>
+              <HeaderButton>Contact Us</HeaderButton>
             </Link>
             <Link href="/about">
-              <HeaderButton text="About"></HeaderButton>
+              <HeaderButton>About</HeaderButton>
             </Link>
-            <Link href="/admin">
-              <HeaderButton text="Admin"></HeaderButton>
-            </Link>
+            {session?.user.isAdmin ? (
+              <Link href="/admin">
+                <HeaderButton>Admin</HeaderButton>
+              </Link>
+            ) : null}
+
+            {pathname !== '/auth/signin' ? (
+              session?.user ? (
+                <>
+                  <GeneralButton
+                    onClick={() => {
+                      signOut()
+                    }}
+                  >
+                    Sign Out
+                  </GeneralButton>
+                </>
+              ) : (
+                <GeneralButton onClick={() => signIn()}>Sign In</GeneralButton>
+              )
+            ) : null}
+            {session?.user ? (
+              <Avatar color={MainColors.RedStatic} src={session.user.image} size={40} radius={40} />
+            ) : null}
           </Group>
         </Grid.Col>
       </Grid>

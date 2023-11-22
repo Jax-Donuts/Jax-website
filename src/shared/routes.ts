@@ -15,5 +15,10 @@ export interface Routes {
 }
 
 export type Response<T extends keyof Routes> = NextResponse<Routes[T]['response']>
+export type ApiResponse<T extends keyof Routes> =
+  | NextResponse<{
+      message: string
+    }>
+  | Response<T>
 export type Body<T extends keyof Routes> = Routes[T]['body']
 export type Params<T extends keyof Routes> = Routes[T]['params']

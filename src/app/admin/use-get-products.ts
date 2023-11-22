@@ -13,7 +13,7 @@ export function useGetProducts() {
       setProducts(fetchedProducts)
       close()
     } catch (error) {
-      console.error('Error fetching products', error)
+      if (error instanceof Error) alert(error.message)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

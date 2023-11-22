@@ -9,7 +9,7 @@ export function useEditProduct(getProducts: () => Promise<void>) {
         await req('PUT /product/[id]', { params: { id }, data: updatedProduct })
         await getProducts()
       } catch (error) {
-        console.error('Error in editProduct:', error)
+        if (error instanceof Error) alert(error.message)
       }
     },
     [getProducts],

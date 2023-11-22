@@ -4,17 +4,16 @@ import { Button } from '@mantine/core'
 import { useStyles } from './general-button.styles'
 
 interface Props {
-  text: string
+  children: React.ReactNode
+  onClick?: () => void
 }
 
-export function GeneralButton({ text }: Props) {
+export function GeneralButton({ children, onClick }: Props) {
   const { classes } = useStyles()
 
   return (
-    <>
-      <Button variant="filled" size="md" radius="xl" className={classes.button}>
-        {text}
-      </Button>
-    </>
+    <Button onClick={onClick} variant="filled" size="md" radius="xl" className={classes.button}>
+      {children}
+    </Button>
   )
 }
