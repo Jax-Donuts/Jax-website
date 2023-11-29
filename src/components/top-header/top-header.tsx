@@ -15,7 +15,6 @@ export function TopHeader() {
   const { data: session } = useSession()
   const pathname = usePathname()
   const [opened, setOpened] = useState(false)
-  console.log('session?.user.image', session?.user.image)
 
   return (
     <div style={{ position: 'fixed', zIndex: 9999, top: 0, width: '100%' }}>
