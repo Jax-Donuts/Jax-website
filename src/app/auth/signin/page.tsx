@@ -1,13 +1,12 @@
 'use client'
 
 import { MainColors } from '@/shared/constants'
-import { Button, Card, Center, Divider, Group, Text, Title } from '@mantine/core'
+import { Button, Card, Container, Divider, Group, Text, Title } from '@mantine/core'
 import { BuiltInProviderType } from 'next-auth/providers/index'
-import { ClientSafeProvider, LiteralUnion, getProviders, signIn, useSession } from 'next-auth/react'
+import { ClientSafeProvider, LiteralUnion, getProviders, signIn } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 
 export default function SignIn() {
-  const { data } = useSession()
   const [providers, setProviders] = useState<Record<
     LiteralUnion<BuiltInProviderType, string>,
     ClientSafeProvider
@@ -22,7 +21,7 @@ export default function SignIn() {
   console.log(providers)
 
   return (
-    <Center>
+    <Container px="15%" pt="6rem">
       <Card w="300px" shadow="sm" radius="xl" p={20} bg={MainColors.PinkWhiteBG} h="30vh">
         <Title order={3} mt={10} ta="center">
           Welcome to Jax
@@ -43,7 +42,7 @@ export default function SignIn() {
             ))}
         </Group>
       </Card>
-    </Center>
+    </Container>
   )
 }
 

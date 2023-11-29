@@ -17,7 +17,7 @@ export function TopHeader() {
   const [opened, setOpened] = useState(false)
 
   return (
-    <div style={{ position: 'fixed', zIndex: 9999, top: 0, width: '100%' }}>
+    <div style={{ position: 'fixed', zIndex: 10, top: 0, width: '100%' }}>
       <Container
         size="fluid"
         px="20%"

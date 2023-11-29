@@ -29,7 +29,7 @@ export default function Admin() {
   }
 
   return (
-    <>
+    <div style={{ paddingTop: '6rem' }}>
       <LoadingOverlay visible={isLoading} overlayBlur={2} />
       <Modal
         opened={opened}
@@ -60,6 +60,6 @@ export default function Admin() {
           getProducts={getProducts}
         />
       </Container>
-    </>
+    </div>
   )
 }
