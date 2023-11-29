@@ -20,7 +20,7 @@ export default function Admin() {
   if (!session?.user || !session) {
     signIn()
   }
-  if (!!session?.user.isAdmin) {
+  if (!session?.user.isAdmin) {
     return (
       <Center>
         <Title transform="uppercase">not authorized</Title>

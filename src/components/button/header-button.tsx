@@ -12,7 +12,7 @@ export function HeaderButton({ children, onClick }: Props) {
   const { classes } = useStyles()
 
   return (
-    <Button variant="subtle" size="md" uppercase className={classes.button} onClick={onClick}>
+    <Button variant="subtle" size="md" pl={0} pr={0} fullWidth uppercase className={classes.button} onClick={onClick}>
       {children}
     </Button>
   )

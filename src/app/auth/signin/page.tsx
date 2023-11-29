@@ -27,7 +27,7 @@ export default function SignIn() {
         <Title order={3} mt={10} ta="center">
           Welcome to Jax
         </Title>
-        <Text c="darkgrey" ta="center" mt={20}>
+        <Text c="dimgray" ta="center" mt={20}>
           Signin with the following
         </Text>
         <Divider c="lightgrey" my="sm" />

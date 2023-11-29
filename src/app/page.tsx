@@ -11,7 +11,7 @@ import { MenuHeaderSlider } from '@/components/menu-header/menu-header-slider'
 export default function Home() {
   return (
     <>
-      <Container size="fluid" px="10rem">
+      <Container size="fluid" px="15%">
         <Space h="10vh" />
         <TitleCard />
         <Space h="10vh" />

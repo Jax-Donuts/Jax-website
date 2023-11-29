@@ -1,4 +1,4 @@
-import { Container, Text, Group, UnstyledButton } from '@mantine/core'
+import { Container, Group, Text, UnstyledButton } from '@mantine/core'
 import { useState } from 'react'
 import { productTypes } from '../../shared/product-types'
 import { useStyles } from './menu-header-dropdown.styles'

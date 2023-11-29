@@ -32,7 +32,7 @@ export default function Footer() {
   ))
 
   return (
-    <Container size="fluid" px="10rem" pb="xl" pt={10} w="100%" className={classes.footer}>
+    <Container size="fluid" px="15%" pb="xl" w="100%" className={classes.footer}>
       <div className={classes.inner}>
         <Link href="/">
           <Stack align="center" spacing={5}>

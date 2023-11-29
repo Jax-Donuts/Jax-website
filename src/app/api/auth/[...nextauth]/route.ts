@@ -1,6 +1,5 @@
 import NextAuth from 'next-auth'
 import GoogleProvider, { GoogleProfile } from 'next-auth/providers/google'
-;('diagotorres51@gmail.com')
 const ADMINS = ['diagotorres51@gmail.com', 'ronnieyin8@gmail.com']
 
 const handler = NextAuth({

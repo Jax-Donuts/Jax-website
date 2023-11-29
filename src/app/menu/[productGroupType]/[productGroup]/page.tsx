@@ -29,7 +29,7 @@ export default function Menu({ params }: { params: MenuRouteParams }) {
   if (!productGroupType || !productGroup) return null
 
   return (
-    <Container>
+    <Container px="15%" pt="6rem">
       <PageHeader title={productGroup.toUpperCase()} />
       <>
         {productsOfFamily.map((product) => {
