@@ -1,7 +1,7 @@
 'use client'
 
 import { MainColors } from '@/shared/constants'
-import { Button, Card, Container, Divider, Group, Text, Title } from '@mantine/core'
+import { Button, Card, Center, Container, Divider, Group, Text, Title } from '@mantine/core'
 import { BuiltInProviderType } from 'next-auth/providers/index'
 import { ClientSafeProvider, LiteralUnion, getProviders, signIn } from 'next-auth/react'
 import { useEffect, useState } from 'react'
@@ -18,30 +18,30 @@ export default function SignIn() {
     init()
   }, [])
 
-  console.log(providers)
-
   return (
-    <Container px="15%" pt="6rem">
-      <Card w="300px" shadow="sm" radius="xl" p={20} bg={MainColors.PinkWhiteBG} h="30vh">
-        <Title order={3} mt={10} ta="center">
-          Welcome to Jax
-        </Title>
-        <Text c="dimgray" ta="center" mt={20}>
-          Signin with the following
-        </Text>
-        <Divider c="lightgrey" my="sm" />
-        <Group grow mb="md" mt="md" ta="center">
-          {providers &&
-            Object.values(providers).map((provider) => (
-              <div key={provider.name}>
-                <Button variant="default" radius="xl" onClick={() => signIn(provider.id, { callbackUrl: '/' })}>
-                  {providerIcon(provider.name.toLowerCase())}
-                  <Text pl={15}>{provider.name}</Text>
-                </Button>
-              </div>
-            ))}
-        </Group>
-      </Card>
+    <Container px="15%" pt="6rem" style={{ justifyContent: 'center' }}>
+      <Center>
+        <Card w="300px" shadow="sm" radius="xl" p={20} bg={MainColors.PinkWhiteBG} h="30vh">
+          <Title order={3} mt={10} ta="center">
+            Welcome to Jax
+          </Title>
+          <Text c="dimgray" ta="center" mt={20}>
+            Signin with the following
+          </Text>
+          <Divider c="lightgrey" my="sm" />
+          <Group grow mb="md" mt="md" ta="center">
+            {providers &&
+              Object.values(providers).map((provider) => (
+                <div key={provider.name}>
+                  <Button variant="default" radius="xl" onClick={() => signIn(provider.id, { callbackUrl: '/' })}>
+                    {providerIcon(provider.name.toLowerCase())}
+                    <Text pl={15}>{provider.name}</Text>
+                  </Button>
+                </div>
+              ))}
+          </Group>
+        </Card>
+      </Center>
     </Container>
   )
 }

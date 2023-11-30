@@ -20,7 +20,7 @@ export function TopHeader() {
     <div style={{ position: 'fixed', zIndex: 10, top: 0, width: '100%' }}>
       <Container
         size="fluid"
-        px="20%"
+        px="15%"
         py={5}
         style={{
           top: 0,
@@ -65,7 +65,7 @@ export function TopHeader() {
         <Popover.Target>
           <Container
             size="fluid"
-            px="20%"
+            px="15%"
             py={20}
             pt={10}
             style={{
@@ -88,20 +88,16 @@ export function TopHeader() {
               </Grid.Col>
 
               <Grid.Col span={8} miw={700}>
-                <SimpleGrid pr={0} cols={6} spacing={0}>
+                <SimpleGrid pr={0} cols={session?.user.isAdmin ? 6 : 5} spacing={0}>
                   <Link href="/">
-                    <HeaderButton>
-                      <Text size="100%">Home</Text>
-                    </HeaderButton>
+                    <HeaderButton>Home</HeaderButton>
                   </Link>
                   <MenuHeader setOpened={setOpened} />
                   <Link href="/location" passHref>
                     <HeaderButton>Location</HeaderButton>
                   </Link>
                   <Link href="/contact" passHref>
-                    <HeaderButton>
-                      <Text size="10">Contact Us</Text>
-                    </HeaderButton>
+                    <HeaderButton>Contact Us</HeaderButton>
                   </Link>
                   <Link href="/about">
                     <HeaderButton>About</HeaderButton>
