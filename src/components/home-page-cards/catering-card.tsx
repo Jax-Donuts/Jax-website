@@ -19,7 +19,7 @@ export default function CateringCard() {
           </Title>
           <Space h="md" />
           <Link href="/contact" passHref>
-            <GeneralButton text="Order Catering"></GeneralButton>
+            <GeneralButton>Order Catering</GeneralButton>
           </Link>
         </Box>
       </Group>

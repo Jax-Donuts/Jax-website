@@ -25,7 +25,7 @@ export default function TryNewProductCard() {
           </Title>
           <Space h="md" />
           <Link href="/menu/productType/drinks" passHref>
-            <GeneralButton text="Drinks"></GeneralButton>
+            <GeneralButton>Drinks</GeneralButton>
           </Link>
         </Box>
       </Group>

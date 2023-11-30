@@ -17,6 +17,7 @@ export async function req<T extends keyof Routes, B extends Routes[T]['body'], P
     path = path?.replace(new RegExp(`\\[${key}\\]`), value)
   }
 
-  const response = await axios<Promise<Routes[T]['response']>>({ method, data, url: `/api${path}` })
-  return response.data
+  const response = await axios({ method, data, url: `/api${path}` })
+  if (response.status !== 200) throw Error(response.data)
+  return response.data as Promise<Routes[T]['response']>
 }

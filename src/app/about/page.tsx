@@ -55,8 +55,8 @@ export default function About() {
 
   return (
     <>
-      <PageHeader title="about us" />
-      <Container fluid px="10rem">
+      <Container fluid px="15%" pt="6rem">
+        <PageHeader title="about us" />
         <Group noWrap align="center" h="100%" grow spacing="xs" pt="md">
           <Box>
             <Text>

@@ -6,11 +6,14 @@ export function useAddProduct(getProducts: () => Promise<void>) {
   const [product, setProduct] = useState<ProductDto>()
   const createProduct = useCallback(
     async (productAttr: ProductAttr) => {
-      setProduct(
-        await req('POST /product', {
+      try {
+        const newProduct = await req('POST /product', {
           data: productAttr,
-        }),
-      )
+        })
+        setProduct(newProduct)
+      } catch (error) {
+        if (error instanceof Error) alert(error.message)
+      }
       await getProducts()
     },
     [getProducts],

@@ -1,7 +1,7 @@
 'use client'
 
 import { PageHeader } from '@/components/page-header/page-header'
-import { Button, Card, Container, Grid, Space, Stack, Table, Text, Title } from '@mantine/core'
+import { Button, Card, Container, Grid, Stack, Table, Text, Title } from '@mantine/core'
 import Link from 'next/link'
 import { ClockHour4, Location as LocationIcon, Phone } from 'tabler-icons-react'
 import { LocationAddress, MainColors } from '../../shared/constants'
@@ -24,9 +24,8 @@ export default function ContactUs() {
   ))
   return (
     <>
-      <PageHeader title="contact us" />
-      <Space h="5vh" />
-      <Container fluid px="10rem">
+      <Container fluid px="15%" pt="6rem">
+        <PageHeader title="contact us" />
         <Grid grow>
           <Grid.Col span={4}>
             <Stack mih="100%" spacing="xl" justify="space-between" align="stretch">
