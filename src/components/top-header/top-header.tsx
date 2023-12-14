@@ -2,33 +2,33 @@
 
 import { GeneralButton, HeaderButton } from '@/components'
 import { MainColors } from '@/shared/constants'
-import { Avatar, Container, Grid, Group, Popover, SimpleGrid, Text, Title } from '@mantine/core'
+import { Avatar, Burger, Center, Container, Grid, Group, Popover, SimpleGrid, Text, Title } from '@mantine/core'
+import { useDisclosure, useMediaQuery } from '@mantine/hooks'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MenuHeader } from '../menu-header/menu-header'
 import { MenuHeaderDropdown } from '../menu-header/menu-header-dropdown'
+import { NavbarSimpleColored } from '../navbar/navbar'
+import { useStyles } from './top-header.styles'
 
 export function TopHeader() {
+  const { classes } = useStyles()
   const { data: session } = useSession()
   const pathname = usePathname()
   const [opened, setOpened] = useState(false)
+  const [burgerMenuOpened, { toggle: toggleBurgerMenu, close: closeBurger }] = useDisclosure(false)
+  const matches = useMediaQuery('(width <= 1000px)')
+  useEffect(() => {
+    closeBurger()
+  }, [matches, closeBurger])
 
   return (
     <div style={{ position: 'fixed', zIndex: 10, top: 0, width: '100%' }}>
-      <Container
-        size="fluid"
-        px="15%"
-        py={5}
-        style={{
-          top: 0,
-          zIndex: 1,
-          backgroundColor: 'white',
-          borderBottom: '1px solid lightgrey',
-        }}
-      >
+      <NavbarSimpleColored width={burgerMenuOpened ? 300 : 0} toggle={toggleBurgerMenu} />
+      <Container size="fluid" px="15%" py={5} className={classes.loginContainer}>
         <Group style={{ justifyContent: 'right' }}>
           {pathname !== '/auth/signin' ? (
             session?.user ? (
@@ -63,31 +63,47 @@ export function TopHeader() {
         styles={{ dropdown: { top: '0 !important', position: 'relative' } }}
       >
         <Popover.Target>
-          <Container
-            size="fluid"
-            px="15%"
-            py={20}
-            pt={10}
-            style={{
-              top: 0,
-              zIndex: 1,
-              backgroundColor: 'white',
-              borderBottom: '1px solid lightgrey',
-            }}
-          >
+          <Container size="fluid" px="15%" py={20} pt={10} className={classes.headerContainer}>
             <Grid align="center" grow>
               <Grid.Col span="content">
                 <Link href="/">
-                  <Group spacing="xs">
-                    <Image src="/logo.png" alt="logo" width={60} height={60} />
-                    <Title size="2.5rem" align="left" color={MainColors.RedStatic} fw={700}>
-                      Jax Donut
-                    </Title>
-                  </Group>
+                  <SimpleGrid
+                    cols={3}
+                    breakpoints={[{ minWidth: 1000, cols: 1, spacing: 'md' }]}
+                    className={classes.simpleGrid}
+                  >
+                    <Burger
+                      color={MainColors.RedStatic}
+                      opened={opened}
+                      onClick={toggleBurgerMenu}
+                      className={classes.burger}
+                    />
+                    <Center>
+                      <Group spacing="xs" align="center" noWrap>
+                        <Image
+                          src="/logo.png"
+                          alt="logo"
+                          width={60}
+                          height={60}
+                          sizes="100vw"
+                          className={classes.headerLogo}
+                        />
+                        <Title
+                          size="2.5rem"
+                          align="left"
+                          color={MainColors.RedStatic}
+                          fw={700}
+                          className={classes.headerTitle}
+                        >
+                          Jax Donut
+                        </Title>
+                      </Group>
+                    </Center>
+                  </SimpleGrid>
                 </Link>
               </Grid.Col>
 
-              <Grid.Col span={8} miw={700}>
+              <Grid.Col span={8} miw={700} className={classes.menuColumn}>
                 <SimpleGrid pr={0} cols={session?.user.isAdmin ? 6 : 5} spacing={0}>
                   <Link href="/">
                     <HeaderButton>Home</HeaderButton>
